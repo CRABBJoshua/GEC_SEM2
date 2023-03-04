@@ -11,7 +11,7 @@ class GameScreenLevel1 : GameScreen
 {
 	class Texture2D
 	{
-		
+
 	};
 
 private:

@@ -1,8 +1,6 @@
 #include "GameScreenLevel1.h"
 #include "SDL_image.h"
-#include "Texture2D.h"
 #include <iostream>
-#include "Source.cpp"
 using namespace std;
 
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer)

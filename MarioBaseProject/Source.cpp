@@ -6,12 +6,14 @@
 #include <iostream>
 #include "Texture2D.h"
 #include "Commons.h"
+#include "GameScreenManager.h"
 using namespace std;
 
 //Globals
 SDL_Window* g_window = nullptr;
 SDL_Renderer* g_renderer = nullptr;
-Texture2D * g_texture = nullptr;
+GameScreenManager* game_screen_manager;
+Uint32 g_old_time;
 
 //Function prototypes
 bool InitSDL();
@@ -24,6 +26,10 @@ int main(int argc, char* args[])
 	//check if sdl was setup correctly
 	if (InitSDL())
 	{
+		game_screen_manager = new GameScreenManager(g_renderer, SCREEN_LEVEL1);
+		//set the time
+		g_old_time = SDL_GetTicks();
+
 		//Flag to check if we wish to quit
 		bool quit = false;
 
@@ -78,13 +84,6 @@ bool InitSDL()
 				return false;
 			}
 
-			//load the background texture
-			g_texture = new Texture2D(g_renderer);
-
-			if (!g_texture->LoadFromFile("Images/test.bmp"))
-			{
-				return false;
-			}
 		}
 		else
 		{
@@ -106,13 +105,16 @@ void CLoseSDL()
 	IMG_Quit();
 	SDL_Quit();
 
-	//Release the renderer
-	delete g_texture;
-	g_texture = nullptr;
+	//destroy the game screen manager
+	delete(game_screen_manager);
+	game_screen_manager = nullptr;
+
 }
 
 bool Update()
 {
+	Uint32 new_time = SDL_GetTicks();
+
 	//Event Handler
 	SDL_Event e;
 
@@ -134,10 +136,17 @@ bool Update()
 		case SDLK_x:
 				return true;
 				break;
+		case SDLK_SPACE:
+			game_screen_manager->ChangeScreens(SCREEN_LEVEL2);
+			break;
+		case SDLK_BACKSPACE:
+			game_screen_manager->ChangeScreens(SCREEN_LEVEL1);
+			break;
 		}
 	}
 
-
+	game_screen_manager->Update((float)(new_time - g_old_time) / 1000.0f, e);
+	g_old_time = new_time;
 	return false;
 }
 
@@ -146,8 +155,8 @@ void Render()
 	//Clear the screen
 	SDL_SetRenderDrawColor(g_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(g_renderer);
-
-	g_texture->Render(Vector2D(), SDL_FLIP_NONE);
+	
+	game_screen_manager->Render();
 
 	//Update Screen
 	SDL_RenderPresent(g_renderer);

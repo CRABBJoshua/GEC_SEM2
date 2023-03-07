@@ -21,3 +21,16 @@ void GameScreenLevel2::Update(float deltaTime, SDL_Event e)
 {
 
 }
+bool GameScreenLevel2::SetUpLevel()
+{
+	m_background_texture = new Texture2D(m_renderer);
+	if (!m_background_texture->LoadFromFile("Images/Green Hill.png"))
+	{
+		std::cout << "Failed to load background texture!" << std::endl;
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}

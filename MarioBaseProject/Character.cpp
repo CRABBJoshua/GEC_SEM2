@@ -24,7 +24,7 @@ void Character::SetPosition(Vector2D new_position)
 {
 
 }
-Vector2D Character::GetPosition()
-{
-
-}
+//Vector2D Character::GetPosition()
+//{
+//
+//}

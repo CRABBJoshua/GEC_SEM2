@@ -17,19 +17,7 @@ private:
 
 	Texture2D* m_background_texture;
 
-	bool SetUpLevel()
-	{
-		m_background_texture = new Texture2D(m_renderer);
-		if (!m_background_texture->LoadFromFile("Images/test.bmp"))
-		{
-			std::cout << "Failed to load background texture!" << std::endl;
-			return false;
-		}
-		else
-		{
-			return true;
-		}
-	}
+	bool SetUpLevel();
 
 public:
 

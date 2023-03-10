@@ -13,7 +13,7 @@ class Character
 {
 protected:
 
-	SDL_Renderer* m_rnederer;
+	SDL_Renderer* m_renderer;
 	Vector2D m_position;
 	Texture2D* m_texture;
 

@@ -5,7 +5,7 @@ using namespace std;
 
 GameScreenLevel2::GameScreenLevel2(SDL_Renderer* renderer) : GameScreen(renderer)
 {
-	GameScreenLevel2::SetUpLevel();
+	SetUpLevel();
 }
 GameScreenLevel2::~GameScreenLevel2()
 {
@@ -20,4 +20,18 @@ void GameScreenLevel2::Render()
 void GameScreenLevel2::Update(float deltaTime, SDL_Event e)
 {
 
+}
+bool GameScreenLevel2::SetUpLevel()
+{
+	my_character = new character(m_renderer, "Images/Mario.png", Vector2D(64, 330));
+	m_background_texture = new Texture2D(m_renderer);
+	if (!m_background_texture->LoadFromFile("Images/test.bmp"))
+	{
+		std::cout << "Failed to load background texture!" << std::endl;
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }

@@ -136,12 +136,12 @@ bool Update()
 		case SDLK_x:
 				return true;
 				break;
-		case SDLK_SPACE:
+		/*case SDLK_SPACE:
 			game_screen_manager->ChangeScreens(SCREEN_LEVEL2);
 			break;
 		case SDLK_BACKSPACE:
 			game_screen_manager->ChangeScreens(SCREEN_LEVEL1);
-			break;
+			break;*/
 		}
 	}
 

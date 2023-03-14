@@ -1,11 +1,13 @@
+#include "CharacterMario.h"
 #include "Character.h"
-#include "Texture2D.h"
-#include <SDL_image.h>
+#include <string>
+#include <SDL.h>
 #include <iostream>
+#include "Commons.h"
 #include "Constants.h"
-using namespace std;
+#include "Texture2D.h"
 
-Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position) 
+CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position) : Character(renderer, imagePath, start_position)
 {
 	m_moving_left = false;
 	m_moving_right = false;
@@ -18,11 +20,11 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 		std::cout << "Failed to load background texture!" << std::endl;
 	}
 }
-Character::~Character()
+CharacterMario::~CharacterMario()
 {
 	m_renderer = nullptr;
 }
-void Character::Render()
+void CharacterMario::Render()
 {
 	if (m_facing_direction == FACING_RIGHT)
 	{
@@ -33,7 +35,7 @@ void Character::Render()
 		m_texture->Render(m_position, SDL_FLIP_HORIZONTAL);
 	}
 }
-void Character::Update(float deltaTime, SDL_Event e)
+void CharacterMario::Update(float deltaTime, SDL_Event e)
 {
 	if (m_jumping)
 	{
@@ -84,26 +86,26 @@ void Character::Update(float deltaTime, SDL_Event e)
 		}
 	}
 }
-void Character::SetPosition(Vector2D new_position)
+void CharacterMario::SetPosition(Vector2D new_position)
 {
 	m_position = new_position;
 }
-Vector2D Character::GetPosition()
+Vector2D CharacterMario::GetPosition()
 {
 	return m_position;
 }
 
-void Character::MoveLeft(float deltaTime)
+void CharacterMario::MoveLeft(float deltaTime)
 {
 	m_position.x -= deltaTime * MOVEMENTSPEED;
 	m_facing_direction = FACING_LEFT;
 }
-void Character::MoveRight(float deltaTime)
+void CharacterMario::MoveRight(float deltaTime)
 {
 	m_position.x += deltaTime * MOVEMENTSPEED;
 	m_facing_direction = FACING_RIGHT;
 }
-void Character::AddGravity(float deltaTime)
+void CharacterMario::AddGravity(float deltaTime)
 {
 	if (m_position.y + 64 <= SCREEN_HEIGHT)
 	{
@@ -113,11 +115,14 @@ void Character::AddGravity(float deltaTime)
 	{
 		m_can_jump = true;
 	}
-	
+
 }
-void Character::Jump()
+void CharacterMario::Jump()
 {
-	m_jump_force = INITAL_JUMP_FORCE;
-	m_jumping = true;
-	m_can_jump = false;
+	if (m_can_jump)
+	{
+		m_jump_force = INITAL_JUMP_FORCE;
+		m_jumping = true;
+		m_can_jump = false;
+	}
 }

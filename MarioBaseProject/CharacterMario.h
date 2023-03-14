@@ -1,15 +1,14 @@
 #pragma once
-#ifndef _Character_H
-#define _Character_H
+#ifndef _CharacterMario_H
+#define _CharacterMario_H
 #include <SDL.h>
 #include <iostream>
 #include <string>
 #include "Commons.h"
+#include "Character.h"
 #endif
 
-class Texture2D;
-
-class Character
+class CharacterMario : Character
 {
 protected:
 
@@ -31,8 +30,8 @@ private:
 
 public:
 
-	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position);
-	~Character();
+	CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position);
+	~CharacterMario();
 
 	virtual void Render();
 	virtual void Update(float deltaTime, SDL_Event e);

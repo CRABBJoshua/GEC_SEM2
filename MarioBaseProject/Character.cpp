@@ -1,5 +1,4 @@
 #include "Character.h"
-#include "Texture2D.h"
 #include <SDL_image.h>
 #include <iostream>
 #include "Constants.h"
@@ -12,6 +11,7 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	m_renderer = renderer;
 	m_position = start_position;
 	m_facing_direction = FACING_RIGHT;
+	m_collision_radius = 15.0f;
 	m_texture = new Texture2D(m_renderer);
 	if (!m_texture->LoadFromFile(imagePath))
 	{
@@ -55,34 +55,6 @@ void Character::Update(float deltaTime, SDL_Event e)
 	{
 		MoveRight(deltaTime);
 	}
-
-	switch (e.type)
-	{
-	case SDL_KEYDOWN:
-		switch (e.key.keysym.sym)
-		{
-		case SDLK_a:
-			m_moving_left = true;
-			break;
-		case SDLK_d:
-			m_moving_right = true;
-			break;
-		}
-		break;
-	case SDL_KEYUP:
-		switch (e.key.keysym.sym)
-		{
-		case SDLK_a:
-			m_moving_left = false;
-			break;
-		case SDLK_d:
-			m_moving_right = false;
-			break;
-		case SDLK_SPACE:
-			Jump();
-			break;
-		}
-	}
 }
 void Character::SetPosition(Vector2D new_position)
 {
@@ -117,7 +89,18 @@ void Character::AddGravity(float deltaTime)
 }
 void Character::Jump()
 {
-	m_jump_force = INITAL_JUMP_FORCE;
-	m_jumping = true;
-	m_can_jump = false;
+	if (m_can_jump)
+	{
+		m_jump_force = INITAL_JUMP_FORCE;
+		m_jumping = true;
+		m_can_jump = false;
+	}
+}
+float Character::GetCollisionRadius()
+{
+	return m_collision_radius;
+}
+Rect2D Character::GetCollisionBox()
+{
+	return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight());
 }

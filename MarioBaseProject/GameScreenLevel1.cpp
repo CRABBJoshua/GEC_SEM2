@@ -1,11 +1,13 @@
 #include "GameScreenLevel1.h"
 #include "SDL_image.h"
 #include <iostream>
+#include "Collisions.h"
 using namespace std;
 
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer)
 {
 	SetUpLevel();
+
 }
 GameScreenLevel1::~GameScreenLevel1()
 {
@@ -26,6 +28,15 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 {
 	my_character_P1->Update(deltaTime, e);
 	my_character_P2->Update(deltaTime, e);
+
+	if (Collisions::Instance()->Circle(my_character_P1, my_character_P2))
+	{
+		cout << "Circle hit!" << endl;
+	}
+	if (Collisions::Instance()->Box(my_character_P1->GetCollisionBox(), my_character_P2->GetCollisionBox()))
+	{
+		cout << "Box hit!" << endl;
+	}
 }
 bool GameScreenLevel1::SetUpLevel()
 {

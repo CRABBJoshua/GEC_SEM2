@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include "Commons.h"
+#include "Texture2D.h"
 #endif
 
 class Texture2D;
@@ -21,6 +22,7 @@ protected:
 	bool m_jumping;
 	bool m_can_jump;
 	float m_jump_force;
+	float m_collision_radius;
 
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);
@@ -41,5 +43,7 @@ public:
 
 	void AddGravity(float deltaTime);
 	void Jump();
+	float GetCollisionRadius();
+	Rect2D GetCollisionBox();
 };
 

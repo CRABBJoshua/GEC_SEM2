@@ -10,6 +10,7 @@
 #include "Character.h"
 #include "CharacterMario.h"
 #include "CharacterLuigi.h"
+#include "LevelMap.h"
 #endif
 
 class Character;
@@ -23,7 +24,9 @@ private:
 	Texture2D* m_background_texture;
 	Character* my_character_P1;
 	Character* my_character_P2;
+	LevelMap* m_level_map;
 
+	void SetLevelMap();
 	bool SetUpLevel();
 
 public:

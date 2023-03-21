@@ -6,5 +6,7 @@
 #define GRAVITY 100
 #define JUMP_FORCE_DECREMENT 400
 #define INITAL_JUMP_FORCE 300
-#define MAP_HEIGHT 16
-#define MAP_WIDTH 13
+#define MAP_HEIGHT 13
+#define MAP_WIDTH 16
+#define TILE_HEIGHT 32
+#define TILE_WIDTH 32

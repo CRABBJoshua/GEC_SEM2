@@ -4,10 +4,11 @@
 #include "Constants.h"
 using namespace std;
 
-Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position) 
+Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map) 
 {
 	m_moving_left = false;
 	m_moving_right = false;
+	m_current_level_map = map;
 	m_renderer = renderer;
 	m_position = start_position;
 	m_facing_direction = FACING_RIGHT;
@@ -35,6 +36,9 @@ void Character::Render()
 }
 void Character::Update(float deltaTime, SDL_Event e)
 {
+	int centralX_position = (int)(m_position.x + (m_texture->GetWidth() * 0.5)) / TILE_WIDTH;
+	int foot_position = (int)(m_position.y + (m_texture->GetHeight())) / TILE_HEIGHT;
+
 	if (m_jumping)
 	{
 		m_position.y -= m_jump_force * deltaTime;
@@ -45,7 +49,14 @@ void Character::Update(float deltaTime, SDL_Event e)
 			m_jumping = false;
 	}
 
-	AddGravity(deltaTime);
+	if (m_current_level_map->GetTileAt(foot_position, centralX_position) == 0)
+	{
+		AddGravity(deltaTime);
+	}
+	else
+	{
+		m_can_jump = true;
+	}
 
 	if (m_moving_left)
 	{

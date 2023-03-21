@@ -2,6 +2,7 @@
 #include "SDL_image.h"
 #include <iostream>
 #include "Collisions.h"
+#include "LevelMap.h"
 using namespace std;
 
 GameScreenLevel2::GameScreenLevel2(SDL_Renderer* renderer) : GameScreen(renderer)
@@ -35,8 +36,8 @@ void GameScreenLevel2::Update(float deltaTime, SDL_Event e)
 }
 bool GameScreenLevel2::SetUpLevel()
 {
-	my_character_P1 = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330));
-	my_character_P2 = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(64, 330));
+	my_character_P1 = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330), m_level_map);
+	my_character_P2 = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(64, 330), m_level_map);
 	m_background_texture = new Texture2D(m_renderer);
 	if (!m_background_texture->LoadFromFile("Images/test.bmp"))
 	{

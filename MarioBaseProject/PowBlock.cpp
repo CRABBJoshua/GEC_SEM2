@@ -41,7 +41,7 @@ void PowBlock::render()
 }
 void PowBlock::TakeHit()
 {
-	m_num_hits_left = 0;
+	m_num_hits_left--;
 	m_level_map->ChangeTileAt(8, 7, 0);
 	m_level_map->ChangeTileAt(8, 8, 0);
 }

@@ -1,9 +1,5 @@
 #include "GameScreenManager.h"
-#include "GameScreenLevel2.h"
-#include "GameScreenLevel1.h"
-#include "GameScreen.h"
-#include "SDL_image.h"
-#include <iostream>
+
 using namespace std;
 
 GameScreenManager::GameScreenManager(SDL_Renderer* renderer, SCREENS startscreen)

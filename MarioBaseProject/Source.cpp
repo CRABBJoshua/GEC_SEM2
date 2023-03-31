@@ -2,8 +2,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
-#include "Constants.h"
 #include <iostream>
+#include "Constants.h"
 #include "Texture2D.h"
 #include "Commons.h"
 #include "GameScreenManager.h"

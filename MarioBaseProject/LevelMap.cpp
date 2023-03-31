@@ -1,10 +1,5 @@
+
 #include "LevelMap.h"
-#include <string>
-#include <SDL.h>
-#include <iostream>
-#include "Commons.h"
-#include "Constants.h"
-#include "Texture2D.h"
 
 /*
 * when making a map, remember:

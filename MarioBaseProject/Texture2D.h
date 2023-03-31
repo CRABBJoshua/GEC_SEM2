@@ -1,9 +1,13 @@
 #pragma once
-#ifndef _Texture2D_H
-#define _Texture2D_H
+#ifndef _TEXTURE2D_H
+#define _TEXTURE2D_H
+
 #include <SDL.h>
 #include <string>
+#include <SDL_image.h>
+#include <iostream>
 #include "Commons.h"
+using namespace std;
 
 class Texture2D
 {
@@ -30,4 +34,4 @@ private:
 	int m_height;
 
 };
-#endif
+#endif //_TEXTURE2D_H

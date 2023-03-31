@@ -1,8 +1,8 @@
-#include "Collisions.h"
-#include "Character.h"
 #include <string>
 #include <SDL.h>
 #include <iostream>
+#include "Collisions.h"
+#include "Character.h"
 #include "Commons.h"
 #include "Constants.h"
 #include "Texture2D.h"

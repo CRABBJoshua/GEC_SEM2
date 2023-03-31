@@ -1,6 +1,6 @@
-#include "Character.h"
 #include <SDL_image.h>
 #include <iostream>
+#include "Character.h"
 #include "Constants.h"
 using namespace std;
 

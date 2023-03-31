@@ -1,10 +1,10 @@
 #pragma once
-#ifndef _GameScreen_H
-#define _GameScreen_H
+#ifndef _GAMESCREEN_H
+#define _GAMESCREEN_H
+
 #include <SDL.h>
 #include <string>
 #include "Commons.h"
-#endif
 
 class GameScreen
 {
@@ -21,4 +21,4 @@ public:
 	virtual void Update(float deltaTime, SDL_Event e);
 
 };
-
+#endif //_GAMESCREEN_H

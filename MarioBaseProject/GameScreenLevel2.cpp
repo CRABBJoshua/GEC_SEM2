@@ -1,6 +1,6 @@
-#include "GameScreenLevel2.h"
-#include "SDL_image.h"
+#include <SDL_image.h>
 #include <iostream>
+#include "GameScreenLevel2.h"
 #include "Collisions.h"
 #include "LevelMap.h"
 using namespace std;

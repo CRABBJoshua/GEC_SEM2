@@ -1,8 +1,8 @@
-#include "CharacterMario.h"
-#include "Character.h"
+#include <iostream>
 #include <string>
 #include <SDL.h>
-#include <iostream>
+#include "CharacterMario.h"
+#include "Character.h"
 #include "Commons.h"
 #include "Constants.h"
 #include "Texture2D.h"

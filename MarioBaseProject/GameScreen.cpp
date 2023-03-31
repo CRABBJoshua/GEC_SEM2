@@ -1,6 +1,6 @@
-#include "GameScreen.h"
-#include "SDL_image.h"
+#include <SDL_image.h>
 #include <iostream>
+#include "GameScreen.h"
 using namespace std;
 
 GameScreen::GameScreen(SDL_Renderer* renderer)

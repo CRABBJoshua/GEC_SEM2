@@ -1,5 +1,6 @@
 #ifndef _LEVELMAP_H
 #define _LEVELMAP_H
+
 #include "Constants.h"
 
 #pragma once
@@ -18,4 +19,4 @@ private:
 	int** m_map;
 };
 
-#endif
+#endif //_LEVELMAP_H

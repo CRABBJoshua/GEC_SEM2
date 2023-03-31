@@ -1,12 +1,12 @@
 #pragma once
-#ifndef _CharacterMario_H
-#define _CharacterMario_H
+#ifndef _CHARACTERMARIO_H
+#define _CHARACTERMARIO_H
+
 #include <SDL.h>
 #include <iostream>
 #include <string>
 #include "Commons.h"
 #include "Character.h"
-#endif
 
 class CharacterMario : public Character
 {
@@ -18,4 +18,4 @@ public:
 	virtual void Update(float deltaTime, SDL_Event e);
 
 };
-
+#endif //_CHARACTERMARIO_H

@@ -1,6 +1,7 @@
 #pragma once
-#ifndef _GameScreenLevel1_H
-#define _GameScreenLevel1_H
+#ifndef _GAMESCREENLEVEL1_H
+#define _GAMESCREENLEVEL1_H
+
 #include "GameScreen.h"
 #include <SDL.h>
 #include <iostream>
@@ -11,7 +12,7 @@
 #include "CharacterMario.h"
 #include "CharacterLuigi.h"
 #include "LevelMap.h"
-#endif
+
 
 class Character;
 class PowBlock;
@@ -47,4 +48,4 @@ public:
 	void Update(float deltaTime, SDL_Event e) override;
 
 };
-
+#endif //_GAMESCREENLEVEL1_H

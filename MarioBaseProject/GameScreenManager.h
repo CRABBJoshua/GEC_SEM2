@@ -1,10 +1,12 @@
 #pragma once
-#ifndef _GameScreenManager_H
-#define _GameScreenManager_H
+#ifndef _GAMESCREENMANAGER_H
+#define _GAMESCREENMANAGER_H
+
 #include <SDL.h>
 #include <string>
 #include "Commons.h"
-#endif
+#include "GameScreenLevel2.h"
+#include "GameScreenLevel1.h"
 
 class GameScreen;
 
@@ -26,4 +28,4 @@ public:
 
 	void ChangeScreens(SCREENS new_screen);
 };
-
+#endif //_GAMESCREENMANAGER_H

@@ -1,6 +1,7 @@
 #pragma once
-#ifndef _Character_H
-#define _Character_H
+#ifndef _CHARACTER_H
+#define _CHARACTER_H
+
 #include <SDL.h>
 #include <iostream>
 #include <string>
@@ -51,4 +52,4 @@ public:
 	Rect2D GetCollisionBox();
 };
 
-#endif
+#endif //_CHARACTER_H

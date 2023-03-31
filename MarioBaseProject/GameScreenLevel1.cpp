@@ -1,6 +1,6 @@
-#include "GameScreenLevel1.h"
-#include "SDL_image.h"
+#include <SDL_image.h>
 #include <iostream>
+#include "GameScreenLevel1.h"
 #include "Collisions.h"
 #include "PowBlock.h"
 using namespace std;

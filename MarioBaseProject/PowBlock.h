@@ -1,6 +1,7 @@
 #pragma once
-#ifndef _PowBlock_H
-#define _PowBlock_H
+#ifndef _POWBLOCK_H
+#define _POWBLOCK_H
+
 #include <SDL.h>
 #include <iostream>
 #include <string>
@@ -36,4 +37,4 @@ public:
 
 };
 
-#endif
+#endif //_POWBLOCK_H

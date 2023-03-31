@@ -6,7 +6,7 @@ using namespace std;
 
 PowBlock::PowBlock(SDL_Renderer* renderer, LevelMap* map)
 {
-	std::string imagePath = "Imgae/PowBlock.png";
+	std::string imagePath = "Images/PowBlock.png";
 	m_texture = new Texture2D(renderer);
 	if (!m_texture->LoadFromFile(imagePath.c_str()))
 	{

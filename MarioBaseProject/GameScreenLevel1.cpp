@@ -8,6 +8,7 @@ using namespace std;
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer)
 {
 	SetUpLevel();
+	m_level_map = nullptr;
 }
 GameScreenLevel1::~GameScreenLevel1()
 {

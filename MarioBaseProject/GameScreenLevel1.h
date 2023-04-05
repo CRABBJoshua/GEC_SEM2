@@ -38,6 +38,10 @@ private:
 	void DoScreenShake();
 	bool SetUpLevel();
 
+	void UpdateEnemies(float deltaTime, SDL_Event e);
+	void CreateKoopa(Vector2D position, FACING direction);
+	//START HERE!!!!
+
 public:
 
 	GameScreenLevel1(SDL_Renderer* renderer);

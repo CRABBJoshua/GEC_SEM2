@@ -6,6 +6,7 @@ CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, string imagePath, LevelMa
 	m_movement_speed = movement_speed;
 	m_position = start_position;
 	m_injured = false;
+	m_alive = true;
 
 	m_single_sprite_w = m_texture->GetWidth() / 2;
 	m_single_sprite_h = m_texture->GetHeight();

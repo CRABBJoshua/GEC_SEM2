@@ -9,6 +9,10 @@
 
 class CharacterKoopa : public Character
 {
+protected:
+
+	bool m_alive;
+
 private:
 	
 	float m_single_sprite_w;
@@ -26,6 +30,9 @@ public:
 
 	void TakeDamage();
 	void Jump();
+	bool SetAlive(bool isAlive);
+	bool GetAlive() { return m_alive; }
+	bool GetInjured() { return m_injured; }
 
 	virtual void Update(float deltaTime, SDL_Event e);
 	virtual void Render();

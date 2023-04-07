@@ -30,7 +30,7 @@ public:
 
 	void TakeDamage();
 	void Jump();
-	bool SetAlive(bool isAlive);
+	void SetAlive(bool isAlive) { m_alive = isAlive; }
 	bool GetAlive() { return m_alive; }
 	bool GetInjured() { return m_injured; }
 

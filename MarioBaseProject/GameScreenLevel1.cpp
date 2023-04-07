@@ -74,6 +74,8 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 bool GameScreenLevel1::SetUpLevel()
 {
 	SetLevelMap();
+	CreateKoopa(Vector2D(150, 200), FACING_RIGHT, KOOPA_SPEED);
+	CreateKoopa(Vector2D(325, 200), FACING_LEFT, KOOPA_SPEED);
 	m_pow_block = new PowBlock(m_renderer, m_level_map);
 	m_screenshake = false;
 	m_background_yPos = 0, 0;
@@ -149,6 +151,7 @@ void GameScreenLevel1::DoScreenShake()
 	m_screenshake = true;
 	m_shake_time = SHAKE_DURATION;
 	m_wobble = 0.0f;
+	Koopa->TakeDamage();
 }
 void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 {
@@ -204,4 +207,9 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 			m_enemies.erase(m_enemies.begin() + enemyIndexToDelete);
 		}
 	}
+}
+void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float speed)
+{
+	Koopa = new CharacterKoopa(m_renderer, "Images/Koopa.png", m_level_map, position, direction, speed);
+	m_enemies.push_back(Koopa);
 }

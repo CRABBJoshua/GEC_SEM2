@@ -1,4 +1,5 @@
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 #include <iostream>
 #include "GameScreenLevel1.h"
 #include "Collisions.h"

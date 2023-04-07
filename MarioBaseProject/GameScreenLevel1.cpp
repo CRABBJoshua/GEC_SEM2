@@ -20,9 +20,21 @@ GameScreenLevel1::~GameScreenLevel1()
 	my_character_P2 = nullptr;
 	delete(m_pow_block);
 	m_pow_block = nullptr;
+
+	for (int i = 0; i < m_enemies.size(); i++)
+	{
+		delete m_enemies[i];
+	}
+	m_enemies.clear();
 }
 void GameScreenLevel1::Render()
 {
+	//Draw the enemies
+	for (int i = 0; i < m_enemies.size(); i++)
+	{
+		m_enemies[i]->Render();
+	}
+
 	m_background_texture->Render(Vector2D(0, m_background_yPos), SDL_FLIP_NONE);
 	my_character_P1->Render();
 	my_character_P2->Render();
@@ -34,6 +46,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	my_character_P2->Update(deltaTime, e);
 
 	UpdatePOWBlock();
+	UpdateEnemies(deltaTime, e);
 
 	if (m_screenshake)
 	{

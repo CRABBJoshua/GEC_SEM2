@@ -18,8 +18,6 @@ private:
 	float m_injured_time;
 
 	void FlipRightWayUp();
-	virtual void Update(float deltaTime, SDL_Event e);
-	virtual void Render();
 
 public:
 
@@ -28,6 +26,9 @@ public:
 
 	void TakeDamage();
 	void Jump();
+
+	virtual void Update(float deltaTime, SDL_Event e);
+	virtual void Render();
 };
 
 #endif //_CHARACTERKOOPA_H

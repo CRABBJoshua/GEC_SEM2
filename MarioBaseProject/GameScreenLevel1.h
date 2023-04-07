@@ -6,13 +6,14 @@
 #include <SDL.h>
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Commons.h"
 #include "Texture2D.h"
 #include "Character.h"
+#include "CharacterKoopa.h"
 #include "CharacterMario.h"
 #include "CharacterLuigi.h"
 #include "LevelMap.h"
-
 
 class Character;
 class PowBlock;
@@ -33,6 +34,7 @@ private:
 	Character* my_character_P2;
 	LevelMap* m_level_map;
 	PowBlock* m_pow_block;
+	vector<CharacterKoopa*> m_enemies;
 
 	void SetLevelMap();
 	void DoScreenShake();

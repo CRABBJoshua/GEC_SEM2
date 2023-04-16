@@ -36,6 +36,7 @@ private:
 	LevelMap* m_level_map;
 	PowBlock* m_pow_block;
 	vector<CharacterKoopa*> m_enemies;
+	SDL_Rect Camera { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
 	void SetLevelMap();
 	void DoScreenShake();

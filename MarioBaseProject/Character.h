@@ -20,6 +20,9 @@ protected:
 	Vector2D m_position;
 	Texture2D* m_texture;
 	FACING m_facing_direction;
+	SDL_Rect source;
+	SDL_Rect destination;
+	SDL_Rect draw;
 	bool m_moving_left;
 	bool m_moving_right;
 	bool m_jumping;

@@ -65,6 +65,15 @@ void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 	//Use the code within the base class
 	Character::Update(deltaTime, e);
 
+	if (m_position.x + m_single_sprite_w > SCREEN_WIDTH && m_facing_direction == FACING_RIGHT && m_position.y < 300.0f)
+	{
+		m_facing_direction = FACING_LEFT;
+	}
+	else if (m_position.x < 0 && m_facing_direction == FACING_LEFT && m_position.y < 300.0f)
+	{
+		m_facing_direction = FACING_RIGHT;
+	}
+
 	if (!m_injured)
 	{
 		//Enemy is not injured so move

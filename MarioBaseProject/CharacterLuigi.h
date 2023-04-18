@@ -12,7 +12,7 @@ class CharacterLuigi : public Character
 {
 public:
 
-	CharacterLuigi(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map);
+	CharacterLuigi(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current);
 	~CharacterLuigi();
 
 	virtual void Update(float deltaTime, SDL_Event e);

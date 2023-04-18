@@ -7,7 +7,7 @@
 #include "Constants.h"
 #include "Texture2D.h"
 
-CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map) : Character(renderer, imagePath, start_position, map)
+CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current) : Character(renderer, imagePath, start_position, map, current)
 {
 	m_renderer = renderer;
 	m_position = start_position;

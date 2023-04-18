@@ -8,11 +8,9 @@
 #include <string>
 #include "Commons.h"
 #include "Texture2D.h"
-#include "Character.h"
 #include "CharacterMario.h"
 #include "CharacterLuigi.h"
 
-class Character;
 
 class GameScreenLevel2 : public GameScreen
 {

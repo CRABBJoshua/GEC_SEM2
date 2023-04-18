@@ -2,10 +2,12 @@
 #include <iostream>
 #include "Character.h"
 #include "Constants.h"
+#include "GameScreenLevel1.h"
 using namespace std;
 
-Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map) 
+Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current) 
 {
+	SetCurrentScreen(current);
 	m_moving_left = false;
 	m_moving_right = false;
 	m_current_level_map = map;
@@ -14,8 +16,8 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	m_facing_direction = FACING_RIGHT;
 	m_collision_radius = 15.0f;
 	m_texture = new Texture2D(m_renderer);
-	/*source = { 0, 0, m_texture->GetWidth(), m_texture->GetHeight() };*/
-	//draw = { m_position.x - Camera.x, m_position.y - Camera.y, m_texture->GetWidth(), m_texture->GetHeight() };
+	source = { 0, 0, m_texture->GetWidth(), m_texture->GetHeight() };
+	draw = { (int)(m_position.x - m_currentScreen->GetCamPos().x), (int)(m_position.y - m_currentScreen->GetCamPos().y), m_texture->GetWidth(), m_texture->GetHeight()};
 	if (!m_texture->LoadFromFile(imagePath))
 	{
 		std::cout << "Failed to load background texture!" << std::endl; 
@@ -29,7 +31,7 @@ void Character::Render()
 {
 	if (m_facing_direction == FACING_RIGHT)
 	{
-		/*m_texture->Render(source, draw, SDL_FLIP_NONE);*/
+		/*m_texture->Render(source, draw, SDL_FLIP_NONE, 0.0);*/
 		m_texture->Render(m_position, SDL_FLIP_NONE);
 	}
 	else
@@ -118,4 +120,9 @@ float Character::GetCollisionRadius()
 Rect2D Character::GetCollisionBox()
 {
 	return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight());
+}
+
+void Character::SetCurrentScreen(GameScreenLevel1* current)
+{
+	m_currentScreen = current;
 }

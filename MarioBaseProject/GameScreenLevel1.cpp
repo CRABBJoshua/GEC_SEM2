@@ -46,7 +46,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	my_character_P1->Update(deltaTime, e);
 	my_character_P2->Update(deltaTime, e);
 
-	Camera.x = SCREEN_WIDTH;
+	Camera.x = (my_character_P1->GetPosition().x + my_character_P1->GetCollisionBox().width) - (SCREEN_WIDTH/2);
 
 	if (Camera.x < 0)
 	{
@@ -86,13 +86,13 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 bool GameScreenLevel1::SetUpLevel()
 {
 	SetLevelMap();
-	CreateKoopa(Vector2D(150, 200), FACING_RIGHT, KOOPA_SPEED);
-	CreateKoopa(Vector2D(325, 200), FACING_LEFT, KOOPA_SPEED);
+	CreateKoopa(Vector2D(150, 100), FACING_RIGHT, KOOPA_SPEED);
+	CreateKoopa(Vector2D(325, 100), FACING_LEFT, KOOPA_SPEED);
 	m_pow_block = new PowBlock(m_renderer, m_level_map);
 	m_screenshake = false;
 	m_background_yPos = 0, 0;
-	my_character_P1 = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330), m_level_map);
-	my_character_P2 = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(400, 330), m_level_map);
+	my_character_P1 = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330), m_level_map, this);
+	my_character_P2 = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(400, 330), m_level_map, this);
 	m_background_texture = new Texture2D(m_renderer);
 	if (!m_background_texture->LoadFromFile("Images/BackgroundMB.png"))
 	{
@@ -179,7 +179,12 @@ void GameScreenLevel1::DoScreenShake()
 	m_screenshake = true;
 	m_shake_time = SHAKE_DURATION;
 	m_wobble = 0.0f;
-	Koopa->TakeDamage();
+	for (unsigned int i = 0; i < m_enemies.size(); i++)
+	{
+		m_enemies[i]->TakeDamage();
+	}
+	/*
+	Koopa->TakeDamage();*/
 }
 void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 {
@@ -238,6 +243,12 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 }
 void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float speed)
 {
-	Koopa = new CharacterKoopa(m_renderer, "Images/Koopa.png", m_level_map, position, direction, speed);
+	Koopa = new CharacterKoopa(m_renderer, "Images/Koopa.png", m_level_map, position, direction, speed, this);
 	m_enemies.push_back(Koopa);
+}
+
+
+Vector2D GameScreenLevel1::GetCamPos()
+{
+	return Vector2D(Camera.x, Camera.y);
 }

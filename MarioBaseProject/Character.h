@@ -9,8 +9,8 @@
 #include "Texture2D.h"
 #include "LevelMap.h"
 
-
 class Texture2D;
+class GameScreenLevel1;
 
 class Character
 {
@@ -34,12 +34,13 @@ protected:
 	virtual void MoveRight(float deltaTime);
 
 private:
-
 	LevelMap* m_current_level_map;
+
+	GameScreenLevel1* m_currentScreen = nullptr;
 
 public:
 
-	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map);
+	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current);
 	~Character();
 
 	virtual void Render();
@@ -53,6 +54,9 @@ public:
 	void CancelJumping() { m_jumping = false;  }
 	float GetCollisionRadius();
 	Rect2D GetCollisionBox();
+
+	void SetCurrentScreen(GameScreenLevel1* current);
+
 };
 
 #endif //_CHARACTER_H

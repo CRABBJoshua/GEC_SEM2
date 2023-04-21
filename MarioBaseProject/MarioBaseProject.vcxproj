@@ -177,6 +177,7 @@
     <ClCompile Include="PowBlock.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Texture2D.cpp" />
+    <ClCompile Include="TitleScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="SDL2\SDL\SDL2.lib" />
@@ -200,6 +201,7 @@
     <ClInclude Include="LevelMap.h" />
     <ClInclude Include="PowBlock.h" />
     <ClInclude Include="Texture2D.h" />
+    <ClInclude Include="TitleScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

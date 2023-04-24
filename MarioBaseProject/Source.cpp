@@ -48,7 +48,7 @@ int main(int argc, char* args[])
 			quit = Update();
 		}
 	}
-
+	
 	CLoseSDL();
 
 	return 0;

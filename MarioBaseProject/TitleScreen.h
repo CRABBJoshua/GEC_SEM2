@@ -14,6 +14,7 @@ class TitleScreen : public GameScreen
 private:
 
 	Texture2D* m_background_texture;
+	Texture2D* m_logo;
 
 	bool SetUpLevel();
 

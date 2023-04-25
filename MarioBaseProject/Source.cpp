@@ -7,6 +7,7 @@
 #include "Texture2D.h"
 #include "Commons.h"
 #include "GameScreenManager.h"
+#include "SDL_ttf.h"
 using namespace std;
 
 //Globals
@@ -22,6 +23,7 @@ void CLoseSDL();
 bool Update();
 void Render();
 void LoadMusic(string path);
+
 
 int main(int argc, char* args[])
 {
@@ -105,6 +107,11 @@ bool InitSDL()
 			cout << "Renderer could not initialise. Error: " << SDL_GetError();
 			return false;
 		}
+		if (TTF_Init() == -1)
+		{
+			cout << "TTF could not initialise. Error: " << TTF_GetError();
+			return false;
+		}
 	}
 	return true;
 }
@@ -118,6 +125,7 @@ void CLoseSDL()
 	//quit SDL subsystems
 	IMG_Quit();
 	SDL_Quit();
+	TTF_Quit();
 
 	//destroy the game screen manager
 	delete(game_screen_manager);

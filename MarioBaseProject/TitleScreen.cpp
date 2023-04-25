@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Collisions.h"
 #include "LevelMap.h"
+
 using namespace std;
 
 TitleScreen::TitleScreen(SDL_Renderer* renderer) : GameScreen(renderer)
@@ -19,7 +20,7 @@ TitleScreen::~TitleScreen()
 void TitleScreen::Render()
 {
 	m_background_texture->Render(Vector2D(), SDL_FLIP_NONE);
-	//m_logo->Render(Vector2D(), SDL_FLIP_NONE, 90);
+	m_logo->Render(Vector2D(48, 0), SDL_FLIP_NONE);
 }
 void TitleScreen::Update(float deltaTime, SDL_Event e)
 {
@@ -27,6 +28,8 @@ void TitleScreen::Update(float deltaTime, SDL_Event e)
 }
 bool TitleScreen::SetUpLevel()
 {
+	
+
 	m_background_texture = new Texture2D(m_renderer);
 
 	if (!m_background_texture->LoadFromFile("Images/BlackScreen.jpg"))
@@ -34,14 +37,21 @@ bool TitleScreen::SetUpLevel()
 		std::cout << "Failed to load background texture!" << std::endl;
 		return false;
 	}
-	else
+
+	m_logo = new Texture2D(m_renderer);
+
+	if (!m_logo->LoadFromFile("Images/Crash_bandicoot_logo.png"))
 	{
-		return true;
+		std::cout << "Failed to load background texture!" << std::endl;
+		return false;
 	}
 
-	/*m_logo = new Texture2D(m_renderer);
+	return true;
 
-	if (!m_background_texture->LoadFromFile("Images/Crash_bandicoot_logo.png"))
+	/*
+	m_logo = new Texture2D(m_renderer);
+
+	if (!m_logo->LoadFromFile("Images/Crash_bandicoot_logo.png"))
 	{
 		std::cout << "Failed to load background texture!" << std::endl;
 		return false;

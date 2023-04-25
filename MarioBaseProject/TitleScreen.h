@@ -5,9 +5,11 @@
 #include "GameScreen.h"
 #include <SDL.h>
 #include <iostream>
+#include <SDL_ttf.h>
 #include <string>
 #include "Commons.h"
 #include "Texture2D.h"
+#include "TextRender.h"
 
 class TitleScreen : public GameScreen
 {

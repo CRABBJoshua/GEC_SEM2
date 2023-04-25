@@ -57,6 +57,9 @@
     <ClCompile Include="TitleScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TextRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="SDL2\SDL\SDL2.lib" />
@@ -64,6 +67,7 @@
     <Library Include="SDL2\SDL\SDL2_mixer.lib" />
     <Library Include="SDL2\SDL\SDL2main.lib" />
     <Library Include="SDL2\SDL\SDL2test.lib" />
+    <Library Include="SDL2\SDL\TTF\SDL2_ttf.lib" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h">
@@ -109,6 +113,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TitleScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextRender.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

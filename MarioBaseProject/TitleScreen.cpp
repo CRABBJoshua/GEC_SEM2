@@ -28,7 +28,7 @@ void TitleScreen::Update(float deltaTime, SDL_Event e)
 }
 bool TitleScreen::SetUpLevel()
 {
-	
+	/*m_text = new TextRender = m_renderer;*/
 
 	m_background_texture = new Texture2D(m_renderer);
 

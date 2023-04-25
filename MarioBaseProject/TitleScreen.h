@@ -17,6 +17,8 @@ private:
 
 	Texture2D* m_background_texture;
 	Texture2D* m_logo;
+	TextRender* m_text;
+	string message;
 
 	bool SetUpLevel();
 

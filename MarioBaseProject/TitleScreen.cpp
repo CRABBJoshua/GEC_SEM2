@@ -4,11 +4,14 @@
 #include "Collisions.h"
 #include "LevelMap.h"
 
+#include <iostream>
+
 using namespace std;
 
 TitleScreen::TitleScreen(SDL_Renderer* renderer) : GameScreen(renderer)
 {
 	SetUpLevel();
+	Counter = 0;
 }
 TitleScreen::~TitleScreen()
 {
@@ -21,20 +24,62 @@ void TitleScreen::Render()
 {
 	m_background_texture->Render(Vector2D(), SDL_FLIP_NONE);
 	m_logo->Render(Vector2D(48, 0), SDL_FLIP_NONE);
+	m_text->Render(180, 200);
+	m_text_Exit->Render(180, 250);
 }
 void TitleScreen::Update(float deltaTime, SDL_Event e)
 {
-	
+	switch (e.type)
+	{
+	case SDL_KEYDOWN:
+		switch (e.key.keysym.sym)
+		{
+		case SDLK_UP:
+			Counter = 0;
+			cout << Counter << endl;
+			break;
+		case SDLK_DOWN:
+			Counter = 1;
+			cout << Counter << endl;
+			break;
+		case SDLK_RETURN:
+			if (Counter == 0) 
+			{
+				Colour = { 0, 0, 0, 255 };
+				cout << "I pressed Enter" << endl;
+			}
+			else
+			{
+				cout << "I pressed Enter" << endl;
+				SDL_Quit();
+			}
+			break;
+		}
+	}
 }
 bool TitleScreen::SetUpLevel()
 {
-	/*m_text = new TextRender = m_renderer;*/
+	m_text = new TextRender(m_renderer);
+	m_text_Exit = new TextRender(m_renderer);
+	SDL_Color Colour = { 255, 255, 255, 255 };
+
+	if (!m_text_Exit->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "Exit", Colour))
+	{
+		cout << "Failed to load Font!" << endl;
+		return false;
+	}
+
+	if (!m_text->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "StartGame", Colour))
+	{
+		cout << "Failed to load Font!" << endl;
+		return false;
+	}
 
 	m_background_texture = new Texture2D(m_renderer);
 
 	if (!m_background_texture->LoadFromFile("Images/BlackScreen.jpg"))
 	{
-		std::cout << "Failed to load background texture!" << std::endl;
+		cout << "Failed to load background texture!" << endl;
 		return false;
 	}
 
@@ -42,7 +87,7 @@ bool TitleScreen::SetUpLevel()
 
 	if (!m_logo->LoadFromFile("Images/Crash_bandicoot_logo.png"))
 	{
-		std::cout << "Failed to load background texture!" << std::endl;
+		cout << "Failed to load background texture!" << endl;
 		return false;
 	}
 

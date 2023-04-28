@@ -37,6 +37,7 @@ int main(int argc, char* args[])
 		}
 
 		game_screen_manager = new GameScreenManager(g_renderer, TITLE_SCREEN);
+
 		//set the time
 		g_old_time = SDL_GetTicks();
 
@@ -172,6 +173,7 @@ bool Update()
 
 	game_screen_manager->Update((float)(new_time - g_old_time) / 1000.0f, e);
 	g_old_time = new_time;
+
 	return false;
 }
 

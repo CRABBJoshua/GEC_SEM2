@@ -2,11 +2,15 @@
 
 using namespace std;
 
+
+
 GameScreenManager::GameScreenManager(SDL_Renderer* renderer, SCREENS startscreen)
 {
 	m_renderer = renderer;
 	m_current_screen = nullptr;
 	ChangeScreens(startscreen);
+
+	//cout << "I got called" << endl;
 }
 GameScreenManager::~GameScreenManager()
 {
@@ -14,6 +18,7 @@ GameScreenManager::~GameScreenManager()
 	delete(m_current_screen);
 	m_current_screen = nullptr;
 }
+
 void GameScreenManager::Render()
 {
 	m_current_screen->Render();

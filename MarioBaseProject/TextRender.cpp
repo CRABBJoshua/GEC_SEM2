@@ -22,10 +22,8 @@ bool TextRender::LoadFont(const std::string filePath, int FontSize, const std::s
 	m_font = TTF_OpenFont(filePath.c_str(), FontSize);
 	if (!m_font)
 	{
-		std::cout << SDL_GetError();
+		std::cout << TTF_GetError();
 	}
-
-	Colour = { 0, 0, 0, 255 };
 
 	SDL_Surface* text_surface = TTF_RenderText_Solid(m_font, Message.c_str(), Colour);
 	if (!text_surface)
@@ -40,7 +38,7 @@ bool TextRender::LoadFont(const std::string filePath, int FontSize, const std::s
 	}
 
 	TTF_CloseFont(m_font);
-	free(text_surface);
+	SDL_FreeSurface(text_surface);
 
 	SDL_QueryTexture(m_texture, nullptr, nullptr, &m_textRect.w, &m_textRect.h);
 

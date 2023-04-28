@@ -48,7 +48,7 @@ public:
 
 	Vector2D GetCamPos();
 	
-	GameScreenLevel1();
+	//GameScreenLevel1();
 	GameScreenLevel1(SDL_Renderer* renderer);
 	~GameScreenLevel1();
 

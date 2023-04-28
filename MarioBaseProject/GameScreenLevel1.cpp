@@ -2,6 +2,7 @@
 #include <SDL_mixer.h>
 #include <iostream>
 #include "GameScreenLevel1.h"
+#include "GameScreenManager.h"
 #include "Collisions.h"
 #include "PowBlock.h"
 using namespace std;

@@ -5,16 +5,18 @@
 #include <SDL.h>
 #include <string>
 #include "Commons.h"
+#include "GameScreenManager.h"
 
 class GameScreen
 {
 protected:
 
 	SDL_Renderer* m_renderer;
+	GameScreenManager* m_screenManager;
 
 public:
 
-	GameScreen(SDL_Renderer* renderer);
+	GameScreen(SDL_Renderer* renderer, GameScreenManager* screenManager);
 	~GameScreen();
 
 	virtual void Render();

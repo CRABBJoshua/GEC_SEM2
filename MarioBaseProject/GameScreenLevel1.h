@@ -49,7 +49,7 @@ public:
 	Vector2D GetCamPos();
 	
 	//GameScreenLevel1();
-	GameScreenLevel1(SDL_Renderer* renderer);
+	GameScreenLevel1(SDL_Renderer* renderer, GameScreenManager* screenManager);
 	~GameScreenLevel1();
 
 	void UpdatePOWBlock();

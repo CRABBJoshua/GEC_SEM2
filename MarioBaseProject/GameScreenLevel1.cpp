@@ -7,7 +7,7 @@
 #include "PowBlock.h"
 using namespace std;
 
-GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer)
+GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer, GameScreenManager* screenManager) : GameScreen(renderer, screenManager)
 {
 	SetUpLevel();
 	m_level_map = nullptr;

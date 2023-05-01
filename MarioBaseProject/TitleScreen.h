@@ -28,7 +28,7 @@ private:
 
 public:
 
-	TitleScreen(SDL_Renderer* renderer);
+	TitleScreen(SDL_Renderer* renderer, GameScreenManager* screenManager);
 	~TitleScreen();
 
 	void Render() override;

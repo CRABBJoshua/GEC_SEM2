@@ -4,13 +4,15 @@
 
 using namespace std;
 
-GameScreen::GameScreen(SDL_Renderer* renderer)
+GameScreen::GameScreen(SDL_Renderer* renderer, GameScreenManager* screenManager)
 {
 	m_renderer = renderer;
+	m_screenManager = screenManager;
 }
 GameScreen::~GameScreen()
 {
 	m_renderer = nullptr;
+	m_screenManager = nullptr;
 }
 void GameScreen::Render(){}
 void GameScreen::Update(float deltaTime, SDL_Event e){}

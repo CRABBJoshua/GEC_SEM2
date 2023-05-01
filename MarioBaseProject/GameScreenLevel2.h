@@ -27,7 +27,7 @@ private:
 
 public:
 
-	GameScreenLevel2(SDL_Renderer* renderer);
+	GameScreenLevel2(SDL_Renderer* renderer, GameScreenManager* screenManager);
 	~GameScreenLevel2();
 
 	void Render() override;

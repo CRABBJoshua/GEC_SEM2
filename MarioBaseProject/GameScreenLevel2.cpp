@@ -5,7 +5,7 @@
 #include "LevelMap.h"
 using namespace std;
 
-GameScreenLevel2::GameScreenLevel2(SDL_Renderer* renderer) : GameScreen(renderer)
+GameScreenLevel2::GameScreenLevel2(SDL_Renderer* renderer, GameScreenManager* screenManager) : GameScreen(renderer, screenManager)
 {
 	SetUpLevel();
 }

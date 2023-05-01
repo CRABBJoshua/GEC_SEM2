@@ -8,7 +8,8 @@
 
 using namespace std;
 
-TitleScreen::TitleScreen(SDL_Renderer* renderer) : GameScreen(renderer)
+TitleScreen::TitleScreen(SDL_Renderer* renderer, GameScreenManager* screenManager) : GameScreen(renderer, screenManager
+)
 {
 	SetUpLevel();
 	Counter = 0;
@@ -46,6 +47,7 @@ void TitleScreen::Update(float deltaTime, SDL_Event e)
 			if (Counter == 0) 
 			{
 				Colour = { 0, 0, 0, 255 };
+				m_screenManager->ChangeScreens(SCREEN_LEVEL1);
 				cout << "I pressed Enter" << endl;
 			}
 			else

@@ -5,9 +5,6 @@
 #include <SDL.h>
 #include <string>
 #include "Commons.h"
-#include "GameScreenLevel2.h"
-#include "GameScreenLevel1.h"
-#include "TitleScreen.h"
 
 class GameScreen;
 

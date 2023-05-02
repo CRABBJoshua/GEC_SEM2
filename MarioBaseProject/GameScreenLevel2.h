@@ -2,11 +2,12 @@
 #ifndef _GAMESCREENLEVEL2_H
 #define _GAMESCREENLEVEL2_H
 
-#include "GameScreen.h"
+
 #include <SDL.h>
 #include <iostream>
 #include <string>
 #include "Commons.h"
+#include "GameScreen.h"
 #include "Texture2D.h"
 #include "CharacterMario.h"
 #include "CharacterLuigi.h"
@@ -14,8 +15,6 @@
 
 class GameScreenLevel2 : public GameScreen
 {
-
-
 private:
 
 	Texture2D* m_background_texture;

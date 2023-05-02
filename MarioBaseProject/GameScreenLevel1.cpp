@@ -37,10 +37,11 @@ void GameScreenLevel1::Render()
 		m_enemies[i]->Render();
 	}
 
-	m_background_texture->Render(Vector2D(0, m_background_yPos), SDL_FLIP_NONE);
+	
 	my_character_P1->Render();
 	my_character_P2->Render();
 	m_pow_block->render();
+	m_background_texture->Render(Vector2D(0, m_background_yPos), Camera, SDL_FLIP_NONE, 0.0f);
 }
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 {
@@ -95,7 +96,7 @@ bool GameScreenLevel1::SetUpLevel()
 	my_character_P1 = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330), m_level_map, this);
 	my_character_P2 = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(400, 330), m_level_map, this);
 	m_background_texture = new Texture2D(m_renderer);
-	if (!m_background_texture->LoadFromFile("Images/BackgroundMB.png"))
+	if (!m_background_texture->LoadFromFile("Images/SMB_NES_World_1-1_Map.png"))
 	{
 		std::cout << "Failed to load background texture!" << std::endl;
 		return false;
@@ -107,7 +108,7 @@ bool GameScreenLevel1::SetUpLevel()
 }
 void GameScreenLevel1::SetLevelMap()
 {
-	int map[MAP_HEIGHT][MAP_WIDTH] = { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	/*int map[MAP_HEIGHT][MAP_WIDTH] = { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
 					  { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
 					  { 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1 },
 					  { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
@@ -119,9 +120,9 @@ void GameScreenLevel1::SetLevelMap()
 					  { 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1 },
 					  { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
 					  { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-					  { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 } };
+					  { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 } };*/
 
-	/*int map[LEVEL_HEIGHT][LEVEL_WIDTH] = { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	int map[MAP_HEIGHT][MAP_WIDTH] = { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{ 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1},
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -134,7 +135,7 @@ void GameScreenLevel1::SetLevelMap()
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-	};*/
+	};
 
 
 	//clear any old maps

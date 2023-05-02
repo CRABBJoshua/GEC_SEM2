@@ -16,8 +16,7 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	m_facing_direction = FACING_RIGHT;
 	m_collision_radius = 15.0f;
 	m_texture = new Texture2D(m_renderer);
-	source = { 0, 0, m_texture->GetWidth(), m_texture->GetHeight() };
-	draw = { (int)(m_position.x - m_currentScreen->GetCamPos().x), (int)(m_position.y - m_currentScreen->GetCamPos().y), m_texture->GetWidth(), m_texture->GetHeight()};
+	
 	if (!m_texture->LoadFromFile(imagePath))
 	{
 		std::cout << "Failed to load background texture!" << std::endl; 
@@ -29,15 +28,18 @@ Character::~Character()
 }
 void Character::Render()
 {
+	source = { 0, 0, m_texture->GetWidth(), m_texture->GetHeight() };
+	draw = { (int)(m_position.x - m_currentScreen->GetCamPos().x), (int)(m_position.y - m_currentScreen->GetCamPos().y), m_texture->GetWidth(), m_texture->GetHeight() };
+
 	if (m_facing_direction == FACING_RIGHT)
 	{
-		/*m_texture->Render(source, draw, SDL_FLIP_NONE, 0.0);*/
-		m_texture->Render(m_position, SDL_FLIP_NONE);
+		m_texture->Render(source, draw, SDL_FLIP_HORIZONTAL);
+		//m_texture->Render(m_position, SDL_FLIP_NONE);
 	}
 	else
 	{
-		/*m_texture->Render(source, draw, SDL_FLIP_HORIZONTAL);*/
-		m_texture->Render(m_position, SDL_FLIP_HORIZONTAL);
+		m_texture->Render(source, draw, SDL_FLIP_HORIZONTAL);
+		//m_texture->Render(m_position, SDL_FLIP_HORIZONTAL);
 	}
 }
 void Character::Update(float deltaTime, SDL_Event e)

@@ -36,17 +36,20 @@ void TitleScreen::Update(float deltaTime, SDL_Event e)
 		switch (e.key.keysym.sym)
 		{
 		case SDLK_UP:
+			ColourStart = { 0, 0, 0, 255};
+			ColourExit = { 255, 255, 255, 255 };
 			Counter = 0;
 			cout << Counter << endl;
 			break;
 		case SDLK_DOWN:
+			ColourStart = { 255, 255, 255, 255};
+			ColourExit = { 0, 0, 0, 255};
 			Counter = 1;
 			cout << Counter << endl;
 			break;
 		case SDLK_RETURN:
 			if (Counter == 0) 
 			{
-				Colour = { 0, 0, 0, 255 };
 				m_screenManager->ChangeScreens(SCREEN_LEVEL1);
 				cout << "I pressed Enter" << endl;
 			}
@@ -63,15 +66,14 @@ bool TitleScreen::SetUpLevel()
 {
 	m_text = new TextRender(m_renderer);
 	m_text_Exit = new TextRender(m_renderer);
-	SDL_Color Colour = { 255, 255, 255, 255 };
 
-	if (!m_text_Exit->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "Exit", Colour))
+	if (!m_text_Exit->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "Exit", ColourStart))
 	{
 		cout << "Failed to load Font!" << endl;
 		return false;
 	}
 
-	if (!m_text->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "StartGame", Colour))
+	if (!m_text->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "StartGame", ColourExit))
 	{
 		cout << "Failed to load Font!" << endl;
 		return false;

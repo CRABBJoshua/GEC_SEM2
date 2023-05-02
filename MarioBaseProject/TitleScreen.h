@@ -2,15 +2,17 @@
 #ifndef _TITLESCREEN_H
 #define _TITLESCREEN_H
 
-#include "GameScreen.h"
+
 #include <SDL.h>
 #include <iostream>
 #include <SDL_ttf.h>
 #include <string>
 #include "Commons.h"
+#include "GameScreen.h"
 #include "Texture2D.h"
 #include "TextRender.h"
-#include "GameScreenManager.h"
+
+class GameScreenManager;
 
 class TitleScreen : public GameScreen
 {
@@ -21,7 +23,8 @@ private:
 	TextRender* m_text;
 	TextRender* m_text_Exit;
 	string message;
-	SDL_Color Colour;
+	SDL_Color ColourStart = { 255, 255, 255, 255 };
+	SDL_Color ColourExit = { 255, 255, 255, 255 };
 	int Counter;
 
 	bool SetUpLevel();

@@ -49,6 +49,7 @@ void CharacterMario::Update(float deltaTime, SDL_Event e)
 			m_moving_right = false;
 			break;
 		case SDLK_SPACE:
+			cout << "JUMPED!" << endl;
 			Jump();
 			break;
 		}

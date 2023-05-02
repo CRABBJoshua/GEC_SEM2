@@ -2,13 +2,14 @@
 #ifndef _GAMESCREENLEVEL1_H
 #define _GAMESCREENLEVEL1_H
 
-#include "GameScreen.h"
+
 #include <SDL.h>
 #include <iostream>
 #include <string>
 #include <vector>
 #include "Commons.h"
 #include "Texture2D.h"
+#include "GameScreen.h"
 #include "CharacterKoopa.h"
 #include "CharacterMario.h"
 #include "CharacterLuigi.h"
@@ -36,10 +37,12 @@ private:
 	PowBlock* m_pow_block;
 	vector<CharacterKoopa*> m_enemies;
 
+	//ScreenScrolling
+	SDL_Rect Camera{ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
 	void SetLevelMap();
 	void DoScreenShake();
 	bool SetUpLevel();
-	SDL_Rect Camera{ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 	void UpdateEnemies(float deltaTime, SDL_Event e);
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
 	//START HERE!!!!

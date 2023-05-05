@@ -27,6 +27,7 @@ void TitleScreen::Render()
 	m_logo->Render(Vector2D(48, 0), SDL_FLIP_NONE);
 	m_text->Render(180, 200);
 	m_text_Exit->Render(180, 250);
+	m_text_Arrow->Render(ArrowPositionX, ArrowPositionY);
 }
 void TitleScreen::Update(float deltaTime, SDL_Event e)
 {
@@ -36,15 +37,13 @@ void TitleScreen::Update(float deltaTime, SDL_Event e)
 		switch (e.key.keysym.sym)
 		{
 		case SDLK_UP:
-			ColourStart = { 0, 0, 0, 255};
-			ColourExit = { 255, 255, 255, 255 };
 			Counter = 0;
+			ArrowPositionY = 200;
 			cout << Counter << endl;
 			break;
 		case SDLK_DOWN:
-			ColourStart = { 255, 255, 255, 255};
-			ColourExit = { 0, 0, 0, 255};
 			Counter = 1;
+			ArrowPositionY = 250;
 			cout << Counter << endl;
 			break;
 		case SDLK_RETURN:
@@ -66,6 +65,7 @@ bool TitleScreen::SetUpLevel()
 {
 	m_text = new TextRender(m_renderer);
 	m_text_Exit = new TextRender(m_renderer);
+	m_text_Arrow = new TextRender(m_renderer);
 
 	if (!m_text_Exit->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "Exit", ColourStart))
 	{
@@ -74,6 +74,12 @@ bool TitleScreen::SetUpLevel()
 	}
 
 	if (!m_text->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "StartGame", ColourExit))
+	{
+		cout << "Failed to load Font!" << endl;
+		return false;
+	}
+
+	if (!m_text_Arrow->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "-", ColourStart))
 	{
 		cout << "Failed to load Font!" << endl;
 		return false;

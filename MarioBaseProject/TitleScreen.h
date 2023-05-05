@@ -22,10 +22,13 @@ private:
 	Texture2D* m_logo;
 	TextRender* m_text;
 	TextRender* m_text_Exit;
+	TextRender* m_text_Arrow;
 	string message;
 	SDL_Color ColourStart = { 255, 255, 255, 255 };
 	SDL_Color ColourExit = { 255, 255, 255, 255 };
 	int Counter;
+	int ArrowPositionX = 150;
+	int ArrowPositionY = 200;
 
 	bool SetUpLevel();
 

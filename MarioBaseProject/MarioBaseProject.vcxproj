@@ -179,6 +179,7 @@
     <ClCompile Include="TextRender.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="TitleScreen.cpp" />
+    <ClCompile Include="Wumpa.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="SDL2\SDL\SDL2.lib" />
@@ -205,6 +206,7 @@
     <ClInclude Include="TextRender.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="TitleScreen.h" />
+    <ClInclude Include="Wumpa.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

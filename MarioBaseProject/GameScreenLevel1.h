@@ -14,13 +14,14 @@
 #include "CharacterMario.h"
 #include "CharacterLuigi.h"
 #include "LevelMap.h"
+#include "TextRender.h"
 
 class PowBlock;
 class Character;
+class Wumpa;
 
 class GameScreenLevel1 : public GameScreen
 {
-	
 
 private:
 
@@ -28,6 +29,9 @@ private:
 	float m_shake_time;
 	float m_wobble;
 	float m_background_yPos;
+	int Score;
+	int Old_Score;
+	string score;
 
 	Texture2D* m_background_texture;
 	Character* my_character_P1;
@@ -35,6 +39,9 @@ private:
 	CharacterKoopa* Koopa;
 	LevelMap* m_level_map;
 	PowBlock* m_pow_block;
+	TextRender* m_text;
+	Wumpa* m_wumpa;
+	SDL_Color Colour = { 255, 255, 255, 255 };
 	vector<CharacterKoopa*> m_enemies;
 
 	//ScreenScrolling

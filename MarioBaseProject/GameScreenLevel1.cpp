@@ -5,6 +5,7 @@
 #include "GameScreenManager.h"
 #include "Collisions.h"
 #include "PowBlock.h"
+#include "Wumpa.h"
 using namespace std;
 
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer, GameScreenManager* screenManager) : GameScreen(renderer, screenManager)
@@ -37,10 +38,12 @@ void GameScreenLevel1::Render()
 		m_enemies[i]->Render();
 	}
 
+	m_pow_block->render();
 	m_background_texture->Render(Vector2D(0, m_background_yPos), Camera, SDL_FLIP_NONE, 0.0f);
 	my_character_P1->Render();
 	my_character_P2->Render();
-	m_pow_block->render();
+	m_text->Render(0,0);
+	m_wumpa->render();
 }
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 {
@@ -60,6 +63,12 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 
 	UpdatePOWBlock();
 	UpdateEnemies(deltaTime, e);
+
+	if (m_text != nullptr && Score != Old_Score)
+	{
+		Old_Score = Score;
+		m_text->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "Wumpa Fruit: " + std::to_string(Score), Colour);
+	}
 
 	if (m_screenshake)
 	{
@@ -95,9 +104,15 @@ bool GameScreenLevel1::SetUpLevel()
 	my_character_P1 = new CharacterMario(m_renderer, "Images/Mario.png", Vector2D(64, 330), m_level_map, this);
 	my_character_P2 = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(400, 1000), m_level_map, this);
 	m_background_texture = new Texture2D(m_renderer);
+	m_text = new TextRender(m_renderer);
 	if (!m_background_texture->LoadFromFile("Images/1-1.png"))
 	{
 		std::cout << "Failed to load background texture!" << std::endl;
+		return false;
+	}
+	if (!m_text->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "Wumpa Fruit: " + std::to_string(Score), Colour))
+	{
+		cout << "Failed to load Font!" << endl;
 		return false;
 	}
 	else

@@ -1,5 +1,6 @@
 #include "CharacterKoopa.h"
 
+//The constructor sets up values I made in the header.
 CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, string imagePath, LevelMap* map, Vector2D start_position, FACING start_facing, float movement_speed, GameScreenLevel1* current) : Character(renderer, imagePath, start_position, map, current)
 {
 	m_facing_direction = start_facing;
@@ -8,18 +9,22 @@ CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, string imagePath, LevelMa
 	m_injured = false;
 	m_alive = true;
 
+	//DO NOT UNDERSTAND
 	m_single_sprite_w = m_texture->GetWidth() / 2;
 	m_single_sprite_h = m_texture->GetHeight();
 }
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 CharacterKoopa::~CharacterKoopa()
 {
 
 }
+//This function sets the values of variables which will alow the enemy to be damaged.
 void CharacterKoopa::TakeDamage()
 {
 	m_injured = true;
 	m_injured_time = INJURED_TIME;
 }
+//This function set values to be used in the update function.
 void CharacterKoopa::Jump()
 {
 	if (!m_jumping)
@@ -29,14 +34,18 @@ void CharacterKoopa::Jump()
 		m_can_jump = false;
 	}
 }
+//This function will make the enemy changing the way it is facing make it Jump, this to create a recover function allowing the enemy to get away.
 void CharacterKoopa::FlipRightWayUp()
 {
-	m_facing_direction = FACING_RIGHT; //NOT SURE ABOUT THIS
+	m_facing_direction = FACING_RIGHT; 
 	m_injured = false;
 	Jump();
 }
+//The Render function, creates the charater in world space.
 void CharacterKoopa::Render()
 {
+	//DO NOT UNDERSTAND V.
+
 	//Variable to hold the left position of the sprite we want to draw
 	int left = 0.0f;
 
@@ -60,11 +69,13 @@ void CharacterKoopa::Render()
 		m_texture->Render(portion_of_sprite, destRect, SDL_FLIP_HORIZONTAL);
 	}
 }
+//The update function will fire every second.
 void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 {
 	//Use the code within the base class
 	Character::Update(deltaTime, e);
 
+	//DO NOT UNDERSTAND
 	if (m_position.x + m_single_sprite_w > SCREEN_WIDTH && m_facing_direction == FACING_RIGHT && m_position.y < 300.0f)
 	{
 		m_facing_direction = FACING_LEFT;

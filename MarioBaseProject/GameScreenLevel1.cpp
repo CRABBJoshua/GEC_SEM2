@@ -8,11 +8,13 @@
 #include "Wumpa.h"
 using namespace std;
 
+//The constructor sets up values I made in the header.
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer, GameScreenManager* screenManager) : GameScreen(renderer, screenManager)
 {
 	SetUpLevel();
 	m_level_map = nullptr;
 }
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 GameScreenLevel1::~GameScreenLevel1()
 {
 	delete(m_background_texture);
@@ -24,12 +26,15 @@ GameScreenLevel1::~GameScreenLevel1()
 	delete(m_pow_block);
 	m_pow_block = nullptr;
 
+	//DO NOT UNDERSTAND
 	for (int i = 0; i < m_enemies.size(); i++)
 	{
 		delete m_enemies[i];
 	}
 	m_enemies.clear();
 }
+//The Render function, creates the charater in world space.
+//CONTINUE HERE
 void GameScreenLevel1::Render()
 {
 	//Draw the enemies

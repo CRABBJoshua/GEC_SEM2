@@ -8,6 +8,7 @@
 #include "Commons.h"
 #include "Character.h"
 
+//The character header file is being used to hold all the info and values of the character class. 
 class Collisions
 {
 

@@ -7,16 +7,20 @@
 #include "Constants.h"
 #include "Texture2D.h"
 
+//DO NOT UNDERSTAND
 Collisions* Collisions::m_instance = nullptr;
 
+//The constructor sets up values I made in the header.
 Collisions::Collisions() 
 {
 	
 }
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 Collisions::~Collisions()
 {
 
 }
+//DO NOT UNDERSTAND
 Collisions* Collisions::Instance()
 {
 	if (!m_instance)
@@ -26,6 +30,7 @@ Collisions* Collisions::Instance()
 
 	return m_instance;
 }
+//DO NOT UNDERSTAND
 bool Collisions::Circle(Character* character1, Character* character2)
 {
 	Vector2D vec = Vector2D((character1->GetPosition().x - character2->GetPosition().x), (character1->GetPosition().y - character2->GetPosition().y));
@@ -36,6 +41,7 @@ bool Collisions::Circle(Character* character1, Character* character2)
 
 	return distance < combined_distance;
 }
+//DO NOT UNDERSTAND
 bool Collisions::Box(Rect2D rect1, Rect2D rect2) 
 {
 	if (rect1.x + (rect1.width / 2) > rect2.x &&

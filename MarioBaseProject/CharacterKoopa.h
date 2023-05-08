@@ -7,6 +7,9 @@
 #include <string>
 #include "Character.h"
 
+//The CharacterKoopa header file is being used to hold all the info and values of the CharacterKoopa class and uses the character class as a base.
+//This means that CharacterKoopa can access certain variables from character. 
+
 class CharacterKoopa : public Character
 {
 protected:

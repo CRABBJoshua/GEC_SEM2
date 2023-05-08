@@ -12,6 +12,8 @@
 class Texture2D;
 class GameScreenLevel1;
 
+//The character header file is being used to hold all the info and values of the character class. 
+
 class Character
 {
 protected:

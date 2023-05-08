@@ -16,10 +16,13 @@
 #include "LevelMap.h"
 #include "TextRender.h"
 
+//Forward Declares
 class PowBlock;
 class Character;
 class Wumpa;
 
+//The GameScreenLevel1 header file is being used to hold all the info and values of the GameScreenLevel1 class and uses the GameScreen class as a base.
+//This means that GameScreenLevel1 can access certain variables from GameScreen. 
 class GameScreenLevel1 : public GameScreen
 {
 
@@ -52,7 +55,6 @@ private:
 	bool SetUpLevel();
 	void UpdateEnemies(float deltaTime, SDL_Event e);
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
-	//START HERE!!!!
 
 public:
 

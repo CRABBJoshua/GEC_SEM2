@@ -7,25 +7,28 @@
 #include "Constants.h"
 #include "Texture2D.h"
 
+//The constructor sets up values I made in the header.
 CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current) : Character(renderer, imagePath, start_position, map, current)
 {
-
 	m_renderer = renderer;
 	m_position = start_position;
-	
 	m_texture = new Texture2D(m_renderer);
+
+	//Checking the texture and if the loadfile function return true if not then it will error catch it.
 	if (!m_texture->LoadFromFile(imagePath))
 	{
 		std::cout << "Failed to load background texture!" << std::endl;
 	}
 }
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 CharacterMario::~CharacterMario()
 {
 	m_renderer = nullptr;
 }
-
+//The update function will fire every second.
 void CharacterMario::Update(float deltaTime, SDL_Event e)
 {
+	//Allows Luigi to move.
 	switch (e.type)
 	{
 	case SDL_KEYDOWN:

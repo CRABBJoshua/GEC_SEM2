@@ -44,6 +44,7 @@ private:
 	PowBlock* m_pow_block;
 	TextRender* m_text;
 	Wumpa* m_wumpa;
+	vector<Wumpa*> m_wumpaFruit;
 	SDL_Color Colour = { 255, 255, 255, 255 };
 	vector<CharacterKoopa*> m_enemies;
 
@@ -54,7 +55,9 @@ private:
 	void DoScreenShake();
 	bool SetUpLevel();
 	void UpdateEnemies(float deltaTime, SDL_Event e);
+	void UpdateWumpa(float deltaTime, SDL_Event e);
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
+	void CreateWumpa(Vector2D position);
 
 public:
 

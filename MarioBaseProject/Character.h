@@ -31,14 +31,13 @@ protected:
 	bool m_can_jump;
 	float m_jump_force;
 	float m_collision_radius;
+	GameScreenLevel1* m_currentScreen = nullptr;
 
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);
 
 private:
 	LevelMap* m_current_level_map;
-
-	GameScreenLevel1* m_currentScreen = nullptr;
 
 public:
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <SDL.h>
+#include <SDL_mixer.h>
 #include "CharacterMario.h"
 #include "Character.h"
 #include "Commons.h"
@@ -53,6 +54,7 @@ void CharacterMario::Update(float deltaTime, SDL_Event e)
 			break;
 		case SDLK_SPACE:
 			cout << "JUMPED!" << endl;
+			Mix_LoadMUS("MarioMP3s/Mario Jump.mp3");
 			Jump();
 			break;
 		}

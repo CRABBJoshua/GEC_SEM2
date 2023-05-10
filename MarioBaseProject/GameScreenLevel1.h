@@ -68,6 +68,7 @@ public:
 	~GameScreenLevel1();
 
 	void UpdatePOWBlock();
+	void LoadMusic(string path);
 	void Render() override;
 	void Update(float deltaTime, SDL_Event e) override;
 

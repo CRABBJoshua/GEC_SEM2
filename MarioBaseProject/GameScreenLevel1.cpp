@@ -116,7 +116,7 @@ bool GameScreenLevel1::SetUpLevel()
 	SetLevelMap();
 	CreateKoopa(Vector2D(150, 100), FACING_RIGHT, KOOPA_SPEED);
 	CreateKoopa(Vector2D(325, 100), FACING_LEFT, KOOPA_SPEED);
-	CreateWumpa(Vector2D(325, 100));
+	CreateWumpa(Vector2D(260, 330));
 	m_pow_block = new PowBlock(m_renderer, m_level_map);
 	m_screenshake = false;
 	m_background_yPos = 0, 0;
@@ -298,7 +298,7 @@ void GameScreenLevel1::UpdateWumpa(float deltaTime, SDL_Event e)
 {
 	if (!m_wumpaFruit.empty())
 	{
-		int enemyIndexToDelete = -1;
+		int wumpaFruitIndexToDelete = -1;
 		for (unsigned int i = 0; i < m_wumpaFruit.size(); i++)
 		{
 			//Check if the enemy is on the bottom row of tiles
@@ -315,7 +315,7 @@ void GameScreenLevel1::UpdateWumpa(float deltaTime, SDL_Event e)
 			m_wumpaFruit[i]->Update(deltaTime, e);
 
 			//Check to see if the enemy collides with the player
-			if ((m_wumpaFruit[i]->GetPosition().y > 300.0f || m_wumpaFruit[i]->GetPosition().y <= 64.0f) && (m_wumpaFruit[i]->GetPosition().x < 64.0f || m_wumpaFruit[i]->GetPosition().x > SCREEN_WIDTH - 96.0f))
+			if ((m_wumpaFruit[i]->GetPosition().y > 330.0f || m_wumpaFruit[i]->GetPosition().y <= 64.0f) && (m_wumpaFruit[i]->GetPosition().x < 64.0f || m_wumpaFruit[i]->GetPosition().x > SCREEN_WIDTH - 96.0f))
 			{
 				//Ingore Collisions if behind pipe
 			}
@@ -323,22 +323,22 @@ void GameScreenLevel1::UpdateWumpa(float deltaTime, SDL_Event e)
 			{
 				if (Collisions::Instance()->Circle(m_wumpaFruit[i], my_character_P1))
 				{
-					cout << "HIT" << endl;
+					Score++;
 				}
 			}
 
 			//If the enemy is no longer alive then schedule it for deletion
-			if (!m_enemies[i]->GetAlive())
+			/*if (!m_wumpaFruit[i]->GetAlive())
 			{
 				enemyIndexToDelete = i;
-			}
+			}*/
 		}
 
 		//Remove dead enemies -1 each update
 
-		if (enemyIndexToDelete != -1)
+		/*if (wumpaFruitIndexToDelete != -1)
 		{
-			m_enemies.erase(m_enemies.begin() + enemyIndexToDelete);
-		}
+			m_wumpaFruit.erase(m_wumpaFruit.begin() + wumpaFruitIndexToDelete);
+		}*/
 	}
 }

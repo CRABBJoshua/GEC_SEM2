@@ -5,6 +5,7 @@ using namespace std;
 
 Wumpa::Wumpa(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current) : Character(renderer, imagePath, start_position, map, current)
 {
+	m_position = start_position;
 	m_texture = new Texture2D(renderer);
 	if (!m_texture->LoadFromFile(imagePath.c_str()))
 	{
@@ -15,7 +16,6 @@ Wumpa::Wumpa(SDL_Renderer* renderer, std::string imagePath, Vector2D start_posit
 	m_single_sprite_w = m_texture->GetWidth() / 14;
 	m_single_sprite_h = m_texture->GetHeight();
 	m_frames_count = 0;
-	m_position = Vector2D((SCREEN_WIDTH * 0.5f) - m_single_sprite_w * 0.5f, 260);
 	animDelay = standardAnimDelay;
 }
 Wumpa::~Wumpa()
@@ -25,7 +25,7 @@ Wumpa::~Wumpa()
 	m_texture = NULL;
 	m_level_map = nullptr;
 }
-void Wumpa::render()
+void Wumpa::Render()
 {
 	int left = m_single_sprite_w * (m_frames_count - 1);
 

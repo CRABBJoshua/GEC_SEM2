@@ -7,12 +7,17 @@
 #include <string>
 #include "Commons.h"
 #include "Character.h"
+#include <SDL_mixer.h>
 
 //The CharacterMario header file is being used to hold all the info and values of the CharacterMario class and uses the character class as a base.
 //This means that CharacterMario can access certain variables from character. 
 
 class CharacterMario : public Character
 {
+
+private:
+	Mix_Music* jumpsound;
+
 public:
 
 	CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current);

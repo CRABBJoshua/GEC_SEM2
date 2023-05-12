@@ -13,6 +13,7 @@ CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Ve
 {
 	m_renderer = renderer;
 	m_position = start_position;
+	IsAttack = false;
 	m_texture = new Texture2D(m_renderer);
 
 	//Checking the texture and if the loadfile function return true if not then it will error catch it.
@@ -20,6 +21,9 @@ CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Ve
 	{
 		std::cout << "Failed to load background texture!" << std::endl;
 	}
+
+	jumpsound=  Mix_LoadMUS("MarioMP3s/Mario Jump.mp3");
+
 }
 //The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 CharacterMario::~CharacterMario()
@@ -52,9 +56,13 @@ void CharacterMario::Update(float deltaTime, SDL_Event e)
 		case SDLK_d:
 			m_moving_right = false;
 			break;
+		case SDLK_e:
+			IsAttack = true;
+			cout << "SPIN" << endl;
+			break;
 		case SDLK_SPACE:
 			cout << "JUMPED!" << endl;
-			Mix_LoadMUS("MarioMP3s/Mario Jump.mp3");
+			Mix_PlayMusic( jumpsound, 0);
 			Jump();
 			break;
 		}

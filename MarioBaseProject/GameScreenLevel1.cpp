@@ -42,7 +42,9 @@ GameScreenLevel1::~GameScreenLevel1()
 //The Render function, creates the charater in world space.
 //CONTINUE HERE
 void GameScreenLevel1::Render()
-{
+{	
+	m_background_texture->Render(Vector2D(0, m_background_yPos), Camera, SDL_FLIP_NONE, 0.0f);
+
 	//Draw the enemies
 	for (int i = 0; i < m_enemies.size(); i++)
 	{
@@ -54,18 +56,15 @@ void GameScreenLevel1::Render()
 		m_wumpaFruit[i]->Render();
 	}
 
-	m_pow_block->render();
-	m_background_texture->Render(Vector2D(0, m_background_yPos), Camera, SDL_FLIP_NONE, 0.0f);
+	//m_pow_block->render();
 	my_character_P1->Render();
 	my_character_P2->Render();
 	m_text->Render(0,0);
-	m_wumpa->render();
 }
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 {
 	my_character_P1->Update(deltaTime, e);
 	my_character_P2->Update(deltaTime, e);
-	m_wumpa->Update(deltaTime, e);
 
 	Camera.x = (my_character_P1->GetPosition().x + my_character_P1->GetCollisionBox().width) - (SCREEN_WIDTH/2);
 
@@ -114,9 +113,10 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 bool GameScreenLevel1::SetUpLevel()
 {
 	SetLevelMap();
-	CreateKoopa(Vector2D(150, 100), FACING_RIGHT, KOOPA_SPEED);
+	CreateKoopa(Vector2D(150, 100), FACING_LEFT, KOOPA_SPEED);
 	CreateKoopa(Vector2D(325, 100), FACING_LEFT, KOOPA_SPEED);
-	CreateWumpa(Vector2D(260, 330));
+	CreateWumpa(Vector2D(260, 320));
+	CreateWumpa(Vector2D(300, 320));
 	m_pow_block = new PowBlock(m_renderer, m_level_map);
 	m_screenshake = false;
 	m_background_yPos = 0, 0;
@@ -124,9 +124,8 @@ bool GameScreenLevel1::SetUpLevel()
 	my_character_P2 = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(400, 1000), m_level_map, this);
 	m_background_texture = new Texture2D(m_renderer);
 
-	m_wumpa = new Wumpa(m_renderer,"Images/Wumpa.png", Vector2D(64, 330), m_level_map, this);
 	m_text = new TextRender(m_renderer);
-	if (!m_background_texture->LoadFromFile("Images/1-1.png"))
+	if (!m_background_texture->LoadFromFile("Images/1-1 Edit.png"))
 	{
 		std::cout << "Failed to load background texture!" << std::endl;
 		return false;
@@ -236,7 +235,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 				//Is the enemy off screen to the left / right?
 				if (m_enemies[i]->GetPosition().x < (float)(-m_enemies[i]->GetCollisionBox().width * 0.5f) || m_enemies[i]->GetPosition().x > SCREEN_WIDTH - (float)(m_enemies[i]->GetCollisionBox().width * 0.55f))
 				{
-					m_enemies[i]->SetAlive(false);
+					//m_enemies[i]->SetAlive(false);
 				}
 			}
 			//Now do the Update
@@ -251,11 +250,12 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 			else
 			{
 				if (Collisions::Instance()->Circle(m_enemies[i], my_character_P1))
-				{
-					if (m_enemies[i]->GetInjured())
+				{ 
+					if (my_character_P1->IsAttacking())
 					{
-						m_enemies[i]->SetAlive(false);
+							m_enemies[i]->SetAlive(false);
 					}
+					
 					else
 					{
 						//Kill mario
@@ -285,7 +285,7 @@ void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float sp
 }
 void GameScreenLevel1::CreateWumpa(Vector2D position)
 {
-	m_wumpa = new Wumpa(m_renderer, "Images/Wumpa.png", position, m_level_map, this);
+	Wumpa* m_wumpa = new Wumpa(m_renderer, "Images/WumpaCropped.png", position, m_level_map, this);
 	m_wumpaFruit.push_back(m_wumpa);
 }
 
@@ -314,31 +314,18 @@ void GameScreenLevel1::UpdateWumpa(float deltaTime, SDL_Event e)
 
 			m_wumpaFruit[i]->Update(deltaTime, e);
 
-			//Check to see if the enemy collides with the player
-			if ((m_wumpaFruit[i]->GetPosition().y > 330.0f || m_wumpaFruit[i]->GetPosition().y <= 64.0f) && (m_wumpaFruit[i]->GetPosition().x < 64.0f || m_wumpaFruit[i]->GetPosition().x > SCREEN_WIDTH - 96.0f))
+			if (Collisions::Instance()->Circle(m_wumpaFruit[i], my_character_P1))
 			{
-				//Ingore Collisions if behind pipe
+				wumpaFruitIndexToDelete = i;
+				Score++;
 			}
-			else
-			{
-				if (Collisions::Instance()->Circle(m_wumpaFruit[i], my_character_P1))
-				{
-					Score++;
-				}
-			}
-
-			//If the enemy is no longer alive then schedule it for deletion
-			/*if (!m_wumpaFruit[i]->GetAlive())
-			{
-				enemyIndexToDelete = i;
-			}*/
 		}
 
 		//Remove dead enemies -1 each update
 
-		/*if (wumpaFruitIndexToDelete != -1)
+		if (wumpaFruitIndexToDelete != -1)
 		{
 			m_wumpaFruit.erase(m_wumpaFruit.begin() + wumpaFruitIndexToDelete);
-		}*/
+		}
 	}
 }

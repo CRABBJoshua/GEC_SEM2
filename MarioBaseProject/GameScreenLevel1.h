@@ -15,6 +15,7 @@
 #include "CharacterLuigi.h"
 #include "LevelMap.h"
 #include "TextRender.h"
+#include "Character.h"
 
 //Forward Declares
 class PowBlock;
@@ -43,7 +44,6 @@ private:
 	LevelMap* m_level_map;
 	PowBlock* m_pow_block;
 	TextRender* m_text;
-	Wumpa* m_wumpa;
 	vector<Wumpa*> m_wumpaFruit;
 	SDL_Color Colour = { 255, 255, 255, 255 };
 	vector<CharacterKoopa*> m_enemies;

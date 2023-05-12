@@ -29,6 +29,7 @@ protected:
 	bool m_moving_right;
 	bool m_jumping;
 	bool m_can_jump;
+	bool IsAttack;
 	float m_jump_force;
 	float m_collision_radius;
 	GameScreenLevel1* m_currentScreen = nullptr;
@@ -52,6 +53,7 @@ public:
 	void AddGravity(float deltaTime);
 	void Jump();
 	bool IsJumping() { return m_jumping; }
+	bool IsAttacking() { return IsAttack; }
 	void CancelJumping() { m_jumping = false;  }
 	float GetCollisionRadius();
 	Rect2D GetCollisionBox();

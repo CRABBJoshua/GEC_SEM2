@@ -14,6 +14,6 @@
 #define TILE_WIDTH 32
 #define SHAKE_DURATION 0.25f
 #define INJURED_TIME 2.5f
-#define KOOPA_SPEED 500
+#define KOOPA_SPEED 200
 #define LEVEL_WIDTH 1024
 #define LEVEL_HEIGHT 416

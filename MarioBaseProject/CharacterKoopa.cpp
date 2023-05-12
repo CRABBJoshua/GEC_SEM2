@@ -59,6 +59,7 @@ void CharacterKoopa::Render()
 	//Determine where you want it drawn
 	SDL_Rect destRect = { (int)(m_position.x), (int)(m_position.y), m_single_sprite_w, m_single_sprite_h };
 
+
 	//Then draw it facing the correct direction
 	if (m_facing_direction == FACING_RIGHT)
 	{
@@ -76,11 +77,7 @@ void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 	Character::Update(deltaTime, e);
 
 	//DO NOT UNDERSTAND
-	if (m_position.x + m_single_sprite_w > SCREEN_WIDTH && m_facing_direction == FACING_RIGHT && m_position.y < 300.0f)
-	{
-		m_facing_direction = FACING_LEFT;
-	}
-	else if (m_position.x < 0 && m_facing_direction == FACING_LEFT && m_position.y < 300.0f)
+	if (m_position.x < 0 && m_facing_direction == FACING_LEFT && m_position.y < 300.0f)
 	{
 		m_facing_direction = FACING_RIGHT;
 	}

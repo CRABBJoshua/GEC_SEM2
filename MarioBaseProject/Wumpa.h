@@ -31,7 +31,7 @@ public:
 	Wumpa(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current);
 	~Wumpa();
 
-	void render();
+	void Render();
 	void Update(float deltaTime, SDL_Event e) override;
 	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_single_sprite_w, m_texture->GetHeight()); }
 	bool IsAvailable() { return m_frames_count > 0; }

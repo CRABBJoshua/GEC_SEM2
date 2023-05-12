@@ -8,11 +8,13 @@
 #include "Commons.h"
 #include "Texture2D.h"
 #include "LevelMap.h"
+#include "GameScreenLevel1.h"
+#include "Character.h"
 #pragma once
 
 class LevelMap;
 
-class PowBlock
+class PowBlock : public Character
 {
 private:
 
@@ -27,7 +29,7 @@ private:
 
 public:
 
-	PowBlock(SDL_Renderer* renderer, LevelMap* map);
+	PowBlock(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current);
 	~PowBlock();
 
 	void render();

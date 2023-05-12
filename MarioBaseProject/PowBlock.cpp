@@ -2,9 +2,9 @@
 
 using namespace std;
 
-PowBlock::PowBlock(SDL_Renderer* renderer, LevelMap* map)
+PowBlock::PowBlock(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current) : Character(renderer, imagePath, start_position, map, current)
 {
-	std::string imagePath = "Images/PowBlock.png";
+	imagePath = "Images/PowBlock.png";
 	m_texture = new Texture2D(renderer);
 	if (!m_texture->LoadFromFile(imagePath.c_str()))
 	{
@@ -27,20 +27,17 @@ PowBlock::~PowBlock()
 }
 void PowBlock::render()
 {
-	if (m_num_hits_left >= 0)
-	{
-		int left = m_single_sprite_w * (m_num_hits_left - 1);
+	int left = m_single_sprite_w * (m_num_hits_left - 1);
 
-		SDL_Rect portion_of_sprite = { left, 0, m_single_sprite_w, m_single_sprite_h };
+	SDL_Rect portion_of_sprite = { left, 0, m_single_sprite_w, m_single_sprite_h };
 
-		SDL_Rect dest_rect = { static_cast<int>(m_position.x), static_cast<int>(m_position.y), m_single_sprite_w, m_single_sprite_h };
+	SDL_Rect dest_rect = { static_cast<int>(m_position.x - m_currentScreen->GetCamPos().x), static_cast<int>(m_position.y), m_single_sprite_w, m_single_sprite_h };
 
-		m_texture->Render(portion_of_sprite, dest_rect, SDL_FLIP_NONE);
-	}
+	m_texture->Render(portion_of_sprite, dest_rect, SDL_FLIP_NONE);
 }
 void PowBlock::TakeHit()
 {
-	m_num_hits_left--;
+	//m_num_hits_left--;
 	m_level_map->ChangeTileAt(8, 7, 0);
 	m_level_map->ChangeTileAt(8, 8, 0);
 }

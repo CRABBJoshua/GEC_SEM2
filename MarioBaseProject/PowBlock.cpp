@@ -15,7 +15,7 @@ PowBlock::PowBlock(SDL_Renderer* renderer, std::string imagePath, Vector2D start
 	m_single_sprite_w = m_texture->GetWidth() / 3;
 	m_single_sprite_h = m_texture->GetHeight();
 	m_num_hits_left = 3;
-	m_position = Vector2D((SCREEN_WIDTH * 0.5f) - m_single_sprite_w * 0.5f, 260);
+	m_position = start_position;
 
 }
 PowBlock::~PowBlock()

@@ -20,8 +20,9 @@ private:
 
 	Texture2D* m_background_texture;
 	Texture2D* m_logo;
-	TextRender* m_text;
+	TextRender* m_text_Level1;
 	TextRender* m_text_Exit;
+	TextRender* m_text_Level2;
 	TextRender* m_text_Arrow;
 	string message;
 	SDL_Color ColourStart = { 255, 255, 255, 255 };

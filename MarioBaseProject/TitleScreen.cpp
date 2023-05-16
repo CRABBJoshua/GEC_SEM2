@@ -25,8 +25,9 @@ void TitleScreen::Render()
 {
 	m_background_texture->Render(Vector2D(), SDL_FLIP_NONE);
 	m_logo->Render(Vector2D(48, 0), SDL_FLIP_NONE);
-	m_text->Render(180, 200);
-	m_text_Exit->Render(180, 250);
+	m_text_Level1->Render(180, 200);
+	m_text_Level2->Render(180, 250);
+	m_text_Exit->Render(180, 300);
 	m_text_Arrow->Render(ArrowPositionX, ArrowPositionY);
 }
 void TitleScreen::Update(float deltaTime, SDL_Event e)
@@ -37,13 +38,23 @@ void TitleScreen::Update(float deltaTime, SDL_Event e)
 		switch (e.key.keysym.sym)
 		{
 		case SDLK_UP:
-			Counter = 0;
-			ArrowPositionY = 200;
+			Counter--;
+			ArrowPositionY -= 50;
+			if (ArrowPositionY < 200)
+			{
+				ArrowPositionY = 200;
+				Counter = 0;
+			}
 			cout << Counter << endl;
 			break;
 		case SDLK_DOWN:
-			Counter = 1;
-			ArrowPositionY = 250;
+			Counter++;
+			ArrowPositionY += 50;
+			if (ArrowPositionY > 300)
+			{
+				ArrowPositionY = 300;
+				Counter = 2;
+			}
 			cout << Counter << endl;
 			break;
 		case SDLK_RETURN:
@@ -52,7 +63,12 @@ void TitleScreen::Update(float deltaTime, SDL_Event e)
 				m_screenManager->ChangeScreens(SCREEN_LEVEL1);
 				cout << "I pressed Enter" << endl;
 			}
-			else
+			else if (Counter == 1)
+			{
+				m_screenManager->ChangeScreens(SCREEN_LEVEL2);
+				cout << "I pressed Enter" << endl;
+			}
+			else if (Counter == 2)
 			{
 				cout << "I pressed Enter" << endl;
 				SDL_Quit();
@@ -63,7 +79,8 @@ void TitleScreen::Update(float deltaTime, SDL_Event e)
 }
 bool TitleScreen::SetUpLevel()
 {
-	m_text = new TextRender(m_renderer);
+	m_text_Level1 = new TextRender(m_renderer);
+	m_text_Level2 = new TextRender(m_renderer);
 	m_text_Exit = new TextRender(m_renderer);
 	m_text_Arrow = new TextRender(m_renderer);
 
@@ -73,7 +90,13 @@ bool TitleScreen::SetUpLevel()
 		return false;
 	}
 
-	if (!m_text->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "StartGame", ColourExit))
+	if (!m_text_Level1->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "Start Level 1", ColourExit))
+	{
+		cout << "Failed to load Font!" << endl;
+		return false;
+	}
+
+	if (!m_text_Level2->LoadFont("Fonts/CrashBandicootWumpa.ttf", 40, "Start Level 2", ColourExit))
 	{
 		cout << "Failed to load Font!" << endl;
 		return false;

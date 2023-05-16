@@ -54,6 +54,8 @@ void Character::Update(float deltaTime, SDL_Event e)
 	//DO NOT UNDERSTAND
 	int centralX_position = (int)(m_position.x + (m_texture->GetWidth() * 0.5)) / TILE_WIDTH;
 	int foot_position = (int)(m_position.y + (m_texture->GetHeight() - 10)) / TILE_HEIGHT;
+	int head_position = (int)(m_position.y / TILE_HEIGHT);
+	int right_position = (int)(m_position.x + (m_texture->GetWidth() - 10)) / TILE_WIDTH;
 
 	//This allows the characters to jump.
 	if (m_jumping)
@@ -70,6 +72,14 @@ void Character::Update(float deltaTime, SDL_Event e)
 	if (m_current_level_map->GetTileAt(foot_position, centralX_position) == 0)
 	{
 		AddGravity(deltaTime);
+	}
+	if (m_current_level_map->GetTileAt(head_position, centralX_position) == 1)
+	{
+		CancelJumping();
+	}
+	if (m_current_level_map->GetTileAt(right_position, centralX_position) == 1)
+	{
+		m_position.x + m_texture->GetWidth();
 	}
 	else
 	{

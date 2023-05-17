@@ -22,7 +22,7 @@ CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Ve
 		std::cout << "Failed to load background texture!" << std::endl;
 	}
 
-	jumpsound=  Mix_LoadMUS("MarioMP3s/Mario Jump.mp3");
+	jumpsound=  Mix_LoadMUS("MarioMP3s/MarioJump.mp3");
 
 }
 //The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).

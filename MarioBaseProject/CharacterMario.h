@@ -14,6 +14,9 @@
 
 class CharacterMario : public Character
 {
+protected:
+	bool m_alive;
+
 
 private:
 	Mix_Music* jumpsound;
@@ -25,6 +28,8 @@ public:
 
 	//The override keyword is used so that we can access the other Update function the character class.
 	void Update(float deltaTime, SDL_Event e) override;
+	void SetAlive(bool isAlive) { m_alive = isAlive; }
+	bool GetAlive() { return m_alive; }
 
 };
 #endif //_CHARACTERMARIO_H

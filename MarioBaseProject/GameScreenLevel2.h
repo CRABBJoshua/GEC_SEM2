@@ -23,6 +23,7 @@ private:
 	LevelMap* m_level_map;
 
 	bool SetUpLevel();
+	void SetLevelMap();
 
 public:
 

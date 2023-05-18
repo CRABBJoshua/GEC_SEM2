@@ -4,7 +4,7 @@
 //screen Dimensions
 #define SCREEN_WIDTH 512
 #define SCREEN_HEIGHT 416
-#define MOVEMENTSPEED 200
+#define MOVEMENTSPEED 170
 #define GRAVITY 100
 #define JUMP_FORCE_DECREMENT 300
 #define INITAL_JUMP_FORCE 350

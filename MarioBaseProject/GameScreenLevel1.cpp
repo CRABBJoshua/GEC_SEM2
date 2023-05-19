@@ -119,6 +119,36 @@ bool GameScreenLevel1::SetUpLevel()
 	CreateWumpa(Vector2D(250, 320));
 	CreateWumpa(Vector2D(300, 320));
 	CreateWumpa(Vector2D(350, 320));
+	CreateWumpa(Vector2D(550, 320));
+	CreateWumpa(Vector2D(600, 320));
+	CreateWumpa(Vector2D(650, 320));
+	CreateWumpa(Vector2D(950, 320));
+	CreateWumpa(Vector2D(1000, 320));
+	CreateWumpa(Vector2D(1050, 320));
+	CreateWumpa(Vector2D(1550, 320));
+	CreateWumpa(Vector2D(1600, 320));
+	CreateWumpa(Vector2D(1650, 320));
+	CreateWumpa(Vector2D(1850, 75));
+	CreateWumpa(Vector2D(1900, 75));
+	CreateWumpa(Vector2D(1950, 75));
+	CreateWumpa(Vector2D(2550, 320));
+	CreateWumpa(Vector2D(2600, 320));
+	CreateWumpa(Vector2D(2650, 320));
+	CreateWumpa(Vector2D(2150, 320));
+	CreateWumpa(Vector2D(2200, 320));
+	CreateWumpa(Vector2D(2250, 320));
+	CreateWumpa(Vector2D(2380, 75));
+	CreateWumpa(Vector2D(2600, 75));
+	CreateWumpa(Vector2D(2650, 75));
+	CreateWumpa(Vector2D(2775, 75));
+	CreateWumpa(Vector2D(2825, 75));
+	CreateWumpa(Vector2D(2875, 75));
+	CreateWumpa(Vector2D(3250, 320));
+	CreateWumpa(Vector2D(3300, 320));
+	CreateWumpa(Vector2D(3900, 320));
+	CreateWumpa(Vector2D(3950, 320));
+	CreateWumpa(Vector2D(4000, 320));
+	CreateWumpa(Vector2D(315, 75));
 	m_pow_block = new PowBlock(m_renderer, "Images/PowBlock.png", Vector2D(500, 1000), m_level_map, this);
 	m_screenshake = false;
 	m_background_yPos = 0, 0;
@@ -260,7 +290,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 					
 					else
 					{
-						my_character_P1->~Character();
+						//my_character_P1->~Character();
 					}
 				}
 			}

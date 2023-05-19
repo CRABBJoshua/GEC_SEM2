@@ -285,7 +285,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 				{ 
 					if (my_character_P1->IsAttacking())
 					{
-						m_enemies[i]->SetAlive(false);
+						enemyIndexToDelete = i;
 					}
 					
 					else

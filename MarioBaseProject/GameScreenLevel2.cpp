@@ -39,8 +39,8 @@ bool GameScreenLevel2::SetUpLevel()
 	SetLevelMap();
 	m_background_texture = new Texture2D(m_renderer);
 	my_character_P1 = new CharacterMario(m_renderer, "Images/Crash.png", Vector2D(250, 300), m_level_map, (GameScreenLevel1*)this);
-	CreateKoopa(Vector2D(500, 0), FACING_RIGHT, KOOPA_SPEED);
-	CreateKoopa(Vector2D(1000, 0), FACING_LEFT, KOOPA_SPEED);
+	//CreateKoopa(Vector2D(500, 0), FACING_RIGHT, KOOPA_SPEED);
+	//CreateKoopa(Vector2D(1000, 0), FACING_LEFT, KOOPA_SPEED);
 	//my_character_P2 = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(100, 0), m_level_map, (GameScreenLevel1*)this);
 	
 	if (!m_background_texture->LoadFromFile("Images/BackgroundMB.png"))

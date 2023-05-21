@@ -16,6 +16,6 @@ GameScreen::~GameScreen()
 	m_renderer = nullptr;
 	m_screenManager = nullptr;
 }
-//DO NOT UNDERSTAND
+//This functions will be used as virtual functions as this class is the parent for the other screens.
 void GameScreen::Render(){}
 void GameScreen::Update(float deltaTime, SDL_Event e){}

@@ -12,8 +12,11 @@
 #include "Texture2D.h"
 #include "TextRender.h"
 
+//Forward Declares
 class GameScreenManager;
 
+//The TitleScreen header file is being used to hold all the info and values of the TitleScreen class and uses the GameScreen class as a base.
+//This means that TitleScreen can access certain variables from GameScreen. 
 class TitleScreen : public GameScreen
 {
 private:

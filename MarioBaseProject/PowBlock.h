@@ -12,8 +12,11 @@
 #include "Character.h"
 #pragma once
 
+//Forward Declares
 class LevelMap;
 
+//The PowBlock header file is being used to hold all the info and values of the PowBlock class and uses the Character class as a base.
+//This means that PowBlock can access certain variables from Character. 
 class PowBlock : public Character
 {
 private:

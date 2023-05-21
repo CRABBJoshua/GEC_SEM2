@@ -3,6 +3,7 @@
 
 using namespace std;
 
+//The constructor sets up values I made in the header.
 Wumpa::Wumpa(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current) : Character(renderer, imagePath, start_position, map, current)
 {
 	m_position = start_position;
@@ -18,6 +19,7 @@ Wumpa::Wumpa(SDL_Renderer* renderer, std::string imagePath, Vector2D start_posit
 	m_frames_count = 0;
 	animDelay = standardAnimDelay;
 }
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 Wumpa::~Wumpa()
 {
 	m_renderer = nullptr;
@@ -25,6 +27,7 @@ Wumpa::~Wumpa()
 	m_texture = NULL;
 	m_level_map = nullptr;
 }
+//The Render function, creates the PowBlock and animates it.
 void Wumpa::Render()
 {
 	int left = m_single_sprite_w * (m_frames_count - 1);
@@ -35,7 +38,7 @@ void Wumpa::Render()
 
 	m_texture->Render(portion_of_sprite, dest_rect, SDL_FLIP_NONE);
 }
-	
+//The update function will fire every second. This being used to play the the animation
 void Wumpa::Update(float deltaTime, SDL_Event e)
 {
 	animDelay -= deltaTime;

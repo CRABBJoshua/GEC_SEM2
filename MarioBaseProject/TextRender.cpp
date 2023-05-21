@@ -1,15 +1,18 @@
 #include "TextRender.h"
 #include <iostream> 
 
+//The constructor sets up values I made in the header.
 TextRender::TextRender(SDL_Renderer* renderer)
 {
 	m_renderer = renderer;
 }
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 TextRender::~TextRender()
 {
 	delete(m_renderer);
 	m_renderer = nullptr;
 }
+//This Render function will render the Text depending on the x and y position
 void TextRender::Render(int x, int y)
 {
 	m_textRect.x = x;
@@ -17,6 +20,7 @@ void TextRender::Render(int x, int y)
 
 	SDL_RenderCopy(m_renderer, m_texture, nullptr, &m_textRect);
 }
+//This function loads the font and makes sure to catch any errors
 bool TextRender::LoadFont(const std::string filePath, int FontSize, const std::string Message, SDL_Color Colour)
 {
 	m_font = TTF_OpenFont(filePath.c_str(), FontSize);

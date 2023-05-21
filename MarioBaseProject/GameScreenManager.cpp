@@ -6,6 +6,7 @@
 
 using namespace std;
 
+//The constructor sets up values I made in the header.
 GameScreenManager::GameScreenManager(SDL_Renderer* renderer, SCREENS startscreen)
 {
 	m_renderer = renderer;
@@ -14,21 +15,24 @@ GameScreenManager::GameScreenManager(SDL_Renderer* renderer, SCREENS startscreen
 
 	//cout << "I got called" << endl;
 }
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 GameScreenManager::~GameScreenManager()
 {
 	m_renderer = nullptr;
 	delete(m_current_screen);
 	m_current_screen = nullptr;
 }
-
+//The Render function, will render the current GameScreen.
 void GameScreenManager::Render()
 {
 	m_current_screen->Render();
 }
+//The update function will fire every second. (Will call the current GameScreens update function.
 void GameScreenManager::Update(float deltaTime, SDL_Event e) 
 {
 	m_current_screen->Update(deltaTime, e);
 }
+//This function will change the screen using the Enum SCREENS. (Changing Levels) 
 void GameScreenManager::ChangeScreens(SCREENS new_screen)
 {
 	GameScreen* tempScreen;

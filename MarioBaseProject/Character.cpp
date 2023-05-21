@@ -51,7 +51,7 @@ void Character::Render()
 //The update function will fire every second.
 void Character::Update(float deltaTime, SDL_Event e)
 {
-	//DO NOT UNDERSTAND
+	//These variables hold the positions of the head, foot and centraX position to be used later.
 	int centralX_position = (int)(m_position.x + (m_texture->GetWidth() * 0.5)) / TILE_WIDTH;
 	/*int centralX_position_right = (int)(m_position.x + (m_texture->GetWidth())) / TILE_WIDTH;
 	int centralX_position_left = (int)(m_position.x / TILE_WIDTH);*/
@@ -70,23 +70,26 @@ void Character::Update(float deltaTime, SDL_Event e)
 			m_jumping = false;
 	}
 
-	//DO NOT UNDERSTAND
+	//Adds gravity when the foot position is equal to 0
 	if (m_current_level_map->GetTileAt(foot_position, centralX_position) == 0)
 	{
 		AddGravity(deltaTime);
 	}
+	//Stops the player from jumping up through collision 
 	if (m_current_level_map->GetTileAt(head_position, centralX_position) == 1)
 	{
 		CancelJumping();
 	}
-	/*if (m_current_level_map->GetTileAt(right_position, centralX_position) == 1)
-	{
-		m_moving_right = false;
-	}*/
+	//Resets the ability to jump
 	else
 	{
 		m_can_jump = true;
 	}
+
+	/*if (m_current_level_map->GetTileAt(right_position, centralX_position) == 1)
+	{
+		m_moving_right = false;
+	}*/
 
 	//This checks if m_moving_left or m_moving_right are true and if they are it will allow the characters to move left or right.
 	if (m_moving_left)

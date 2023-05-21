@@ -8,12 +8,13 @@
 
 using namespace std;
 
-TitleScreen::TitleScreen(SDL_Renderer* renderer, GameScreenManager* screenManager) : GameScreen(renderer, screenManager
-)
+//The constructor sets up values I made in the header.
+TitleScreen::TitleScreen(SDL_Renderer* renderer, GameScreenManager* screenManager) : GameScreen(renderer, screenManager)
 {
 	SetUpLevel();
 	Counter = 0;
 }
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 TitleScreen::~TitleScreen()
 {
 	delete(m_background_texture);
@@ -21,6 +22,7 @@ TitleScreen::~TitleScreen()
 	delete(m_logo);
 	m_logo = nullptr;
 }
+//The Render function, creates everything seen in the level.
 void TitleScreen::Render()
 {
 	m_background_texture->Render(Vector2D(), SDL_FLIP_NONE);
@@ -30,6 +32,7 @@ void TitleScreen::Render()
 	m_text_Exit->Render(180, 300);
 	m_text_Arrow->Render(ArrowPositionX, ArrowPositionY);
 }
+//The update function will fire every second. This is used to control the titlescreen.
 void TitleScreen::Update(float deltaTime, SDL_Event e)
 {
 	switch (e.type)
@@ -77,6 +80,7 @@ void TitleScreen::Update(float deltaTime, SDL_Event e)
 		}
 	}
 }
+//This function will be used to setup the level, this includes text and images
 bool TitleScreen::SetUpLevel()
 {
 	m_text_Level1 = new TextRender(m_renderer);

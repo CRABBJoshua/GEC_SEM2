@@ -6,8 +6,10 @@
 #include <string>
 #include "Commons.h"
 
+//Forward Declares
 class GameScreen;
 
+//The GameScreenManager header file is being used to hold all the info and values of the GameScreenManager class. 
 class GameScreenManager
 {
 

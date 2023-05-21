@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//The constructor sets up values I made in the header.
 PowBlock::PowBlock(SDL_Renderer* renderer, std::string imagePath, Vector2D start_position, LevelMap* map, GameScreenLevel1* current) : Character(renderer, imagePath, start_position, map, current)
 {
 	imagePath = "Images/PowBlock.png";
@@ -16,8 +17,8 @@ PowBlock::PowBlock(SDL_Renderer* renderer, std::string imagePath, Vector2D start
 	m_single_sprite_h = m_texture->GetHeight();
 	m_num_hits_left = 3;
 	m_position = start_position;
-
 }
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 PowBlock::~PowBlock()
 {
 	m_renderer = nullptr;
@@ -25,6 +26,7 @@ PowBlock::~PowBlock()
 	m_texture = NULL;
 	m_level_map = nullptr;
 }
+//The Render function, creates the PowBlock and animates it.
 void PowBlock::render()
 {
 	int left = m_single_sprite_w * (m_num_hits_left - 1);
@@ -35,6 +37,7 @@ void PowBlock::render()
 
 	m_texture->Render(portion_of_sprite, dest_rect, SDL_FLIP_NONE);
 }
+//This function doesn't do anything anymore.
 void PowBlock::TakeHit()
 {
 	//m_num_hits_left--;

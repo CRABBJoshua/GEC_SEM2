@@ -5,6 +5,7 @@
 
 #pragma once
 
+//The LevelMap header file is being used to hold all the info and values of the LevelMap class. 
 class LevelMap
 {
 

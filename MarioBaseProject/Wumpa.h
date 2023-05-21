@@ -10,6 +10,8 @@
 #include "LevelMap.h"
 #include "Character.h"
 
+//The Wumpa header file is being used to hold all the info and values of the Wumpa class and uses the Character class as a base.
+//This means that Wumpa can access certain variables from Character. 
 class Wumpa : public Character
 {
 private:

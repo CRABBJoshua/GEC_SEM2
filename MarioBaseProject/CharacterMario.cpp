@@ -22,7 +22,8 @@ CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Ve
 		std::cout << "Failed to load background texture!" << std::endl;
 	}
 
-	jumpsound=  Mix_LoadMUS("MarioMP3s/MarioJump.mp3");
+	//Stores jump sound
+	jumpsound = Mix_LoadMUS("MarioMP3s/MarioJump.mp3");
 
 }
 //The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
@@ -33,7 +34,7 @@ CharacterMario::~CharacterMario()
 //The update function will fire every second.
 void CharacterMario::Update(float deltaTime, SDL_Event e)
 {
-	//Allows Luigi to move.
+	//Allows Mario to move.
 	switch (e.type)
 	{
 	case SDL_KEYDOWN:

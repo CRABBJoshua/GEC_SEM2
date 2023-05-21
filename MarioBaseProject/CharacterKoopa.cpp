@@ -9,7 +9,7 @@ CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, string imagePath, LevelMa
 	m_injured = false;
 	m_alive = true;
 
-	//DO NOT UNDERSTAND
+	//These variables hold the Width and Height and the enemy sprites that will be used 
 	m_single_sprite_w = m_texture->GetWidth() / 2;
 	m_single_sprite_h = m_texture->GetHeight();
 }
@@ -27,6 +27,7 @@ void CharacterKoopa::TakeDamage()
 //This function set values to be used in the update function.
 void CharacterKoopa::Jump()
 {
+	//This will make the enemy jump when called
 	if (!m_jumping)
 	{
 		m_jump_force = INITAL_JUMP_FORCE;
@@ -44,8 +45,6 @@ void CharacterKoopa::FlipRightWayUp()
 //The Render function, creates the charater in world space.
 void CharacterKoopa::Render()
 {
-	//DO NOT UNDERSTAND V.
-
 	//Variable to hold the left position of the sprite we want to draw
 	int left = 0.0f;
 
@@ -76,7 +75,7 @@ void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 	//Use the code within the base class
 	Character::Update(deltaTime, e);
 
-	//DO NOT UNDERSTAND
+	//This makes the enemy move using the enum list to check what direction it is facing, as well as checking if it is damaged to stop it's movement.
 	if (m_position.x < 0 && m_facing_direction == FACING_LEFT && m_position.y < 300.0f)
 	{
 		m_facing_direction = FACING_RIGHT;

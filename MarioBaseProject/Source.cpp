@@ -10,6 +10,8 @@
 #include "SDL_ttf.h"
 using namespace std;
 
+//This is where the code starts and where most is set up, like the starting screen, the music, error handle, Opening and Closing SDL
+
 //Globals
 SDL_Window* g_window = nullptr;
 SDL_Renderer* g_renderer = nullptr;

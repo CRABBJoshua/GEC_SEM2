@@ -26,7 +26,7 @@ GameScreenLevel1::~GameScreenLevel1()
 	delete(m_pow_block);
 	m_pow_block = nullptr;
 
-	//DO NOT UNDERSTAND
+	//Used to deconstruct array's / vector's.
 	for (int i = 0; i < m_enemies.size(); i++)
 	{
 		delete m_enemies[i];
@@ -39,8 +39,7 @@ GameScreenLevel1::~GameScreenLevel1()
 	}
 	m_wumpaFruit.clear();
 }
-//The Render function, creates the charater in world space.
-//CONTINUE HERE
+//The Render function, creates everything seen in the level.
 void GameScreenLevel1::Render()
 {	
 	m_background_texture->Render(Vector2D(0, m_background_yPos), Camera, SDL_FLIP_NONE, 0.0f);
@@ -62,6 +61,7 @@ void GameScreenLevel1::Render()
 	my_character_P2->Render();
 	m_text->Render(0,0);
 }
+//The update function will fire every second.
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 {
 	my_character_P1->Update(deltaTime, e);
@@ -111,6 +111,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 		cout << "Box hit!" << endl;
 	}
 }
+//This function will be used to setup the level, this includes spawning the player, enemy's, picks and level.
 bool GameScreenLevel1::SetUpLevel()
 {
 	SetLevelMap();
@@ -172,6 +173,8 @@ bool GameScreenLevel1::SetUpLevel()
 		return true;
 	}
 }
+
+//This sets up the levelmap and creates the levels collision
 void GameScreenLevel1::SetLevelMap()
 {
 	/*int map[MAP_HEIGHT][MAP_WIDTH] = { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
@@ -214,6 +217,8 @@ void GameScreenLevel1::SetLevelMap()
 	m_level_map = new LevelMap(map);
 
 }
+//This function updates the POW Block and checks if the player is hitting the collision box of the powblock using the Collision Instance
+//If true it will check the powblock is available, will shake the screen and will decreases the amount of times it can be used.
 void GameScreenLevel1::UpdatePOWBlock()
 {
 	if (Collisions::Instance()->Box(my_character_P1->GetCollisionBox(), m_pow_block->GetCollisionBox()))
@@ -242,6 +247,7 @@ void GameScreenLevel1::UpdatePOWBlock()
 		}
 	}
 }
+//Shakes the screen and deals damage to the enemies.
 void GameScreenLevel1::DoScreenShake()
 {
 	m_screenshake = true;
@@ -254,6 +260,7 @@ void GameScreenLevel1::DoScreenShake()
 	/*
 	Koopa->TakeDamage();*/
 }
+//This is function Updates the enemies by checking if the player hits the collision
 void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 {
 	if (!m_enemies.empty())
@@ -310,22 +317,24 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 		}
 	}
 }
+//This function creates the Enemy in the scene
 void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float speed)
 {
 	Koopa = new CharacterKoopa(m_renderer, "Images/Koopa.png", m_level_map, position, direction, speed, this);
 	m_enemies.push_back(Koopa);
 }
+//This function creates the wumpa fruit in the scene
 void GameScreenLevel1::CreateWumpa(Vector2D position)
 {
 	Wumpa* m_wumpa = new Wumpa(m_renderer, "Images/WumpaCropped.png", position, m_level_map, this);
 	m_wumpaFruit.push_back(m_wumpa);
 }
-
+//This functions gets the Camera's position and returns it.
 Vector2D GameScreenLevel1::GetCamPos()
 {
 	return Vector2D(Camera.x, Camera.y);
 }
-
+//This is function Updates the Wumpa Fruit by checking if the player hits the collision
 void GameScreenLevel1::UpdateWumpa(float deltaTime, SDL_Event e)
 {
 	if (!m_wumpaFruit.empty())

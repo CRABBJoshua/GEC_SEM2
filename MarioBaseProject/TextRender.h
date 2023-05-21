@@ -4,6 +4,7 @@
 #include <SDL_ttf.h>
 #include <string>
 
+//The TextRender header file is being used to hold all the info and values of the TextRender class. 
 class TextRender
 {
 public:
@@ -19,7 +20,6 @@ private:
 	SDL_Texture* m_texture;
 	SDL_Rect m_textRect;
 	TTF_Font* m_font;
-
 };
 
 #endif //_TEXTRENDER_H

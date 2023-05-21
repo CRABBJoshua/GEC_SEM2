@@ -1,4 +1,3 @@
-
 #include "LevelMap.h"
 
 /*
@@ -6,6 +5,7 @@
 * 0 = empty space, 1 = blocked/occupied space
 */
 
+//The constructor sets up values I made in the header. Sets up the Map Height and Map Width.
 LevelMap::LevelMap(int map[MAP_HEIGHT][MAP_WIDTH])
 {
 	//Allocate memory for the level map
@@ -24,6 +24,7 @@ LevelMap::LevelMap(int map[MAP_HEIGHT][MAP_WIDTH])
 		}
 	}
 }
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 LevelMap::~LevelMap() 
 {
 	//delete all elements of the array
@@ -33,6 +34,7 @@ LevelMap::~LevelMap()
 	}
 	delete[] m_map;
 }
+//This function gets a tile of the level map using the height and width
 int LevelMap::GetTileAt(unsigned int h, unsigned int w)
 {
 	if (h < MAP_HEIGHT && w < MAP_WIDTH)
@@ -42,7 +44,7 @@ int LevelMap::GetTileAt(unsigned int h, unsigned int w)
 
 	return 0;
 }
-
+//Function doesn't do anything
 void LevelMap::ChangeTileAt(unsigned int row, unsigned int column, unsigned int new_value)
 {
 

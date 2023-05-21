@@ -5,11 +5,13 @@
 #include "LevelMap.h"
 using namespace std;
 
+//The constructor sets up values I made in the header.
 GameScreenLevel2::GameScreenLevel2(SDL_Renderer* renderer, GameScreenManager* screenManager) : GameScreen(renderer, screenManager)
 {
 	SetUpLevel();
 	m_level_map = nullptr;
 }
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 GameScreenLevel2::~GameScreenLevel2()
 {
 	delete(m_background_texture);
@@ -23,22 +25,23 @@ GameScreenLevel2::~GameScreenLevel2()
 	m_enemies.clear();
 
 }
-
+//The Render function, creates the everything seen in the level.
 void GameScreenLevel2::Render()
 {
 	m_background_texture->Render(Vector2D(), SDL_FLIP_NONE);
 	my_character_P1->Render();
 }
+//The update function will fire every second.
 void GameScreenLevel2::Update(float deltaTime, SDL_Event e)
 {
 	my_character_P1->Update(deltaTime, e);
-	
 }
+//This function will be used to setup the level, this includes spawning the player, enemy's, picks and level.
 bool GameScreenLevel2::SetUpLevel()
 {
 	SetLevelMap();
-	m_background_texture = new Texture2D(m_renderer);
 	my_character_P1 = new CharacterMario(m_renderer, "Images/Crash.png", Vector2D(250, 300), m_level_map, (GameScreenLevel1*)this);
+	m_background_texture = new Texture2D(m_renderer);
 	//CreateKoopa(Vector2D(500, 0), FACING_RIGHT, KOOPA_SPEED);
 	//CreateKoopa(Vector2D(1000, 0), FACING_LEFT, KOOPA_SPEED);
 	//my_character_P2 = new CharacterLuigi(m_renderer, "Images/Luigi.png", Vector2D(100, 0), m_level_map, (GameScreenLevel1*)this);
@@ -53,6 +56,7 @@ bool GameScreenLevel2::SetUpLevel()
 		return true;
 	}
 }
+//This sets up the levelmap and creates the levels collision
 void GameScreenLevel2::SetLevelMap()
 {
 	int map[MAP_HEIGHT][MAP_WIDTH] = { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
@@ -95,6 +99,7 @@ void GameScreenLevel2::SetLevelMap()
 	m_level_map = new LevelMap(map);
 
 }
+//This is function Updates the enemies by checking if the player hits the collision
 void GameScreenLevel2::UpdateEnemies(float deltaTime, SDL_Event e)
 {
 	if (!m_enemies.empty())
@@ -151,6 +156,7 @@ void GameScreenLevel2::UpdateEnemies(float deltaTime, SDL_Event e)
 		}
 	}
 }
+//This function creates the Enemy in the scene
 void GameScreenLevel2::CreateKoopa(Vector2D position, FACING direction, float speed)
 {
 	Koopa = new CharacterKoopa(m_renderer, "Images/Koopa.png", m_level_map, position, direction, speed, (GameScreenLevel1*)this);

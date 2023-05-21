@@ -1,17 +1,18 @@
 #include "Texture2D.h"
 
+//The constructor sets up values I made in the header.
 Texture2D::Texture2D(SDL_Renderer* renderer)
 {
 	m_renderer = renderer;
 }
-
+//The deconstructor sets values to Null as they are no longer in use. (Deconstructor happens when the character leaves a level).
 Texture2D::~Texture2D()
 {
 	Free();
 
 	m_renderer = nullptr;
 }
-
+//This function loads images and sprites into the game from the files.
 bool Texture2D::LoadFromFile(std::string path)
 {
 	//remove memory used for a previous texture
@@ -45,7 +46,7 @@ bool Texture2D::LoadFromFile(std::string path)
 	//return the texture
 	return m_texture != nullptr;
 }
-
+//This function free's up the texture by setting it too null and destroying it
 void Texture2D::Free()
 {
 	//check if texture exists before removing it
@@ -56,6 +57,7 @@ void Texture2D::Free()
 	}
 }
 
+//These three functions are used to render textures onto classes such as the player, enemy and the wumpa fruit.
 void Texture2D::Render(Vector2D new_position, SDL_RendererFlip flip, double angle)
 {
 	SDL_Rect renderlocation = { new_position.x,new_position.y,m_width, m_height };

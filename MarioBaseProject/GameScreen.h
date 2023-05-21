@@ -8,7 +8,6 @@
 #include "GameScreenManager.h"
 
 //The GameScreen header file is being used to hold all the info and values of the GameScreen class. 
-
 class GameScreen
 {
 protected:

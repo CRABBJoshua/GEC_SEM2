@@ -14,7 +14,8 @@
 #include "CharacterKoopa.h"
 #include <vector>
 
-
+//The GameScreenLevel2 header file is being used to hold all the info and values of the GameScreenLevel2 class and uses the GameScreen class as a base.
+//This means that GameScreenLevel2 can access certain variables from GameScreen. 
 class GameScreenLevel2 : public GameScreen
 {
 private:

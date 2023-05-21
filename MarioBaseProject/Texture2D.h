@@ -9,6 +9,7 @@
 #include "Commons.h"
 using namespace std;
 
+//The Texture2D header file is being used to hold all the info and values of the Texture2D class. 
 class Texture2D
 {
 public:

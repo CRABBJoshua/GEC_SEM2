@@ -1,5 +1,5 @@
 #pragma once
-//Constants is used to store info useful for all classes and can be access by all of them, as well as store constant variables
+//Constants is used to store info useful for all classes and can be access by all of them, as well as store constant variables, like the Level Width and Height
 
 //screen Dimensions
 #define SCREEN_WIDTH 512
